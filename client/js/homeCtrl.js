@@ -29,14 +29,113 @@
 
 		vm.CURRENT_SHOW.randomlyGrabbedLinks = [];
 		vm.CURRENT_SHOW.randomlyGrabbedFutureLinks = [];
+		vm.CURRENT_SHOW.currentLinks = [];
+		vm.CURRENT_SHOW.futureLinks = [];
+		vm.CURRENT_SHOW.previousLinks = [];
 
 		vm.CURRENT_SHOW.showID;
 		vm.tvURL = "south_park";
 
+		vm.CURRENT_SHOW.currentSeasonNumber;
+		vm.CURRENT_SHOW.currentEpisodeName;
+		vm.CURRENT_SHOW.currentEpisodeNumber;
+
 
 		vm.clickOnTVLink = function(link) {
+			console.log( "				Starting FullSweep" );
+			storeFullSweep = true;
 			storeCurrent = true;
+			vm.CURRENT_SHOW.currentSeasonNumber = parseInt(link.season);
+			vm.CURRENT_SHOW.currentEpisodeName = link.name;
+			vm.CURRENT_SHOW.currentEpisodeNumber = parseInt(link.number);
+			//console.log( vm.CURRENT_SHOW.currentEpisodeName + " =: S: " + vm.CURRENT_SHOW.currentSeasonNumber + " E: " + vm.CURRENT_SHOW.currentEpisodeNumber );
 			searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , link.season , link.number );
+		};
+
+		var storeLinks = function() {
+
+			if ( storeFullSweep ) {
+
+				if ( storeCurrent ) {
+					storeCurrent = false;
+					//console.log("storing into vm.CURRENT_SHOW.currentlinks[]");
+					vm.CURRENT_SHOW.currentLinks = recievedMP4URLS;
+					storeFuture = true;
+
+					var episode , season;
+					// boundry checks for future / next episode
+					// ===================================================================
+						// if Next Episode is Outside of this Season
+						if ( ( vm.CURRENT_SHOW.currentEpisodeNumber + 1 ) > vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - vm.CURRENT_SHOW.currentSeasonNumber ][0].number ) {
+
+							// are we in the last season ?
+							season = ( parseInt(vm.CURRENT_SHOW.currentSeasonNumber) === vm.CURRENT_SHOW.seasons.length ) ? 1 : vm.CURRENT_SHOW.currentSeasonNumber + 1 ;
+							episode = 1;
+
+						}
+						else {
+							season = vm.CURRENT_SHOW.currentSeasonNumber;
+							episode = vm.CURRENT_SHOW.currentEpisodeNumber + 1;
+						}
+					// ===================================================================
+					searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , season , episode );
+
+				}
+				else if ( storeFuture ) {
+
+					storeFuture = false
+					//console.log("storing into vm.CURRENT_SHOW.futureLinks[]");
+					vm.CURRENT_SHOW.futureLinks = recievedMP4URLS;
+					storePrevious = true;
+
+					var episode , season
+					// boundry checks for previous episode
+					// ===================================================================
+						// if first in season , go back a season
+						if ( vm.CURRENT_SHOW.currentEpisodeNumber === 1 ) {
+
+							// are we in the first season ?
+							season = ( vm.CURRENT_SHOW.currentSeasonNumber === 1 ) ? vm.CURRENT_SHOW.seasons.length : vm.CURRENT_SHOW.currentSeasonNumber - 1;
+							episode = vm.CURRENT_SHOW.seasons[ season - 1 ][0].number;
+
+						}
+						else {
+							season = vm.CURRENT_SHOW.currentSeasonNumber;
+							episode = vm.CURRENT_SHOW.currentEpisodeNumber - 1;
+						}
+					// ===================================================================
+					searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , season , episode );
+
+
+				}
+				else if ( storePrevious ) {
+
+					storePrevious = false;
+					storeFullSweep = false;
+					//console.log("storing into vm.CURRENT_SHOW.previousLinks[]");
+					vm.CURRENT_SHOW.previousLinks = recievedMP4URLS;
+
+					console.log( "				FullSweep Success!" );
+					console.log("	CurrentLinks = ");
+					console.log( vm.CURRENT_SHOW.currentLinks[0] );
+					console.log( vm.CURRENT_SHOW.currentLinks[1] );
+					console.log( "	FutureLinks =  " );
+					console.log( vm.CURRENT_SHOW.futureLinks[0] );
+					console.log( vm.CURRENT_SHOW.futureLinks[1] );
+					console.log( "	PreviousLinks =  " );
+					console.log( vm.CURRENT_SHOW.previousLinks[0] );
+					console.log( vm.CURRENT_SHOW.previousLinks[1] );					
+
+				}
+
+			}
+			else if ( storeRandom ) {
+
+			}
+			else if ( storeRandomFuture ) {
+
+			}
+
 		};
 
 		var getMP4URLS = function( data ) {
@@ -53,15 +152,19 @@
 						console.log(e);
 					})
 					.success(function(rData){
-						recievedMP4URLS.push( rData );
+						if ( rData != undefined && rData != " " && rData.length > 5 ) {
+							recievedMP4URLS.push( rData );
+						}
 						getMP4URLS( data );
 					})
 				;
 
 			}
-			else {
-				console.log( recievedMP4URLS[0] );
-				console.log( recievedMP4URLS[1] );
+			else { // Grab Bag is Empty , Fill Apropriatly
+
+				storeLinks();
+				//console.log( recievedMP4URLS[0] );
+				//console.log( recievedMP4URLS[1] );
 			}
 
 		};

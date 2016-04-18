@@ -86,13 +86,25 @@ module.exports.searchTVShowEpisodeForProviders = function( req , res ) {
 
 var parseForVodlockerMP4 = function( res , body ) { // needs undefined error checking like real bad
 
-	var start , end;
-	start = body.indexOf( "jwplayer(\"flvplayer\").setup({" );
+	
+	var start , start2 , end;
+	start = body.indexOf( "player_code" );
+	start2 = body.indexOf( "file:" , start );
 	end = body.indexOf( "v.mp4"  , start );
-	var mp4URL = body.substring( start + 6 , end + 5 );
-	mp4URL = mp4URL.split("file:")[1];
-	start = mp4URL.indexOf( "http:" );
-	mp4URL = mp4URL.substring( start , mp4URL.length );
+	var mp4URL = body.substring( start2 + 7 , end + 5 );
+	
+
+
+	/*
+	var $ = cheerio.load(body);
+	var $linkSearch = $("#player_code");
+	$linkSearch.add($linkSearch.find('*'));
+	$linkSearch.each( function( i , e ) {
+		//console.log( $(e).attr("title") + " = " + $(e).attr("href") );
+		console.log( $(e) );
+	});
+	*/
+
 
 	sendJSONResponse( res , 200 , mp4URL );
 
@@ -110,20 +122,24 @@ var parseForVodlockerHash = function( res , body , id ) {
 	hash = hash.split(" ")[1];
 	hash = hash.split("\"")[1];
 
-	console.log( "		FOUND HASH: " + hash );
-	request.post( { url: searchURL , form: { op: "download1" , id: id , hash: hash } } , function( error , response , rBody ) {
+	setTimeout(function(){
+		console.log("waiting on vodlocker countdown ....");
 
-		if ( !error && response.statusCode === 200 ) {
-			if (rBody) {
-				parseForVodlockerMP4( res , rBody );
+		// console.log( "		FOUND HASH: " + hash );
+		request.post( { url: searchURL , form: { op: "download1" , id: id , hash: hash , imhuman: "Proceed to video" } } , function( error , response , rBody ) {
+
+			if ( !error && response.statusCode === 200 ) {
+				if (rBody) {
+					parseForVodlockerMP4( res , rBody );
+				}
 			}
-		}
-		else {
-			if ( error ) { console.log( error ); sendJSONResponse( res , 404 , null ); }
-		}		
+			else {
+				if ( error ) { console.log( error ); sendJSONResponse( res , 404 , null ); }
+			}		
 
-	});
+		});
 
+	}, 1500 );
 
 };
 

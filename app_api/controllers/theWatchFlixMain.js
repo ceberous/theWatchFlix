@@ -38,6 +38,12 @@ var parseForProviders = function( res , body ) {
 	var results = [];
 
 	var $ = cheerio.load(body);
+
+	var episodeName = $('span.list-top').text();
+	episodeName = episodeName.split(" - ")[1];
+	//console.log("Episode Name = " + episodeName);
+	results.push(episodeName);
+
 	var $linkSearch = $("#linktable a");
 	$linkSearch.add($linkSearch.find('*'));
 	$linkSearch.each( function( i , e ) {
@@ -93,8 +99,6 @@ var parseForVodlockerMP4 = function( res , body ) { // needs undefined error che
 	end = body.indexOf( "v.mp4"  , start );
 	var mp4URL = body.substring( start2 + 7 , end + 5 );
 	
-
-
 	/*
 	var $ = cheerio.load(body);
 	var $linkSearch = $("#player_code");
@@ -104,7 +108,6 @@ var parseForVodlockerMP4 = function( res , body ) { // needs undefined error che
 		console.log( $(e) );
 	});
 	*/
-
 
 	sendJSONResponse( res , 200 , mp4URL );
 

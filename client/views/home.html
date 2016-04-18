@@ -62,7 +62,7 @@
 
 									<ul class="dropdown-menu">
 										<li ng-repeat="episode in season track by $index">
-											<a ng-click="vm.clickOnTVLink()">{{episode.number}}.) {{episode.name}}</a>
+											<a ng-click="vm.clickOnTVLink(episode)">{{episode.number}}.) {{episode.name}}</a>
 										</li>
 									</ul>
 								</div>

@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>TheWatchFlix</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/video-js.css">
+		<link rel="stylesheet" type="text/css" href="./css/video-js-playlist-ui.vertical.css">
+
+		<script type="text/javascript" src="./js/libraries/angular.js"></script>
+		<script type="text/javascript" src="./js/libraries/angular-resource.js"></script>
+		<script type="text/javascript" src="./js/libraries/angular-sanitize.js"></script>
+		<script type="text/javascript" src="./js/libraries/angular-ui-router.js"></script>
+
+		<script type="text/javascript" src="./js/libraries/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/libraries/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./js/libraries/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="./js/angularMain.js"></script>
+		<script type="text/javascript" src="./js/homeCtrl.js"></script>
+		<script type="text/javascript" src="./js/navigationDirective.js"></script>
+		<script type="text/javascript" src="./js/footerDirective.js"></script>
+
+		<script type="text/javascript" src="./js/libraries/video.js"></script>
+		<script type="text/javascript" src="./js/libraries/videojs-playlist.min.js"></script>
+		<script type="text/javascript" src="./js/libraries/videojs-playlist-ui.js"></script>
+	</head>
+
+<body ng-app="theWatchFlixApp">
+
+<div class="row">
+  
+  <div class="col-sm-3">
+    <navigation-generic></navigation-generic>
+  </div>
+
+  <div class="col-sm-9">
+    <div ui-view=""></div>
+  </div> 
+
+</div>
+
+<!-- <footer-generic></footer-generic> -->
+
+</body>
+</html>
+

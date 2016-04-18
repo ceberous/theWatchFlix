@@ -1,0 +1,80 @@
+ <div class="row">
+	
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2 col-xs-12" >
+		<div class="wrapperDiv" style="border-style: solid; border-color: green;">
+
+
+			<h1 class="text-center"><input id="tvURL" ng-model="vm.tvURL" type="text" placeholder="show url" ></h1>
+
+
+			<h1 class="text-center">
+				<button ng-click="vm.searchTVShow()" class="btn btn-success">Search TV Show</button>
+				<button ng-click="vm.reset()" class="btn btn-danger">RESET</button>
+				<button ng-if="vm.showShuffleButton" ng-click="vm.toggleShuffle()" type="button" class="btn btn-success">Shuffle = {{vm.IS_SHUFFLE}}</button>
+			</h1>
+
+			<h1 ng-if="vm.displayVideo">
+				{{vm.CURRENT_SHOW.name}}
+			</h1>
+
+			<div  class="row" >
+				<div class="col-xs-12" >
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+
+							<h3>Season-{{vm.currentSeason}} Episode-{{vm.currentEpisode}} - {{vm.CURRENT_EPISODE_NAME}}</h3>
+
+							<button ng-if="vm.showRetryProvider" ng-click="vm.retryProvider() "type="button" class="btn btn-warning">Retry Provider</button>
+							<!-- <button type="button" class="btn btn-warning">Next Provider</button> -->
+								
+							<button ng-if="vm.showPreviousButton" ng-click="vm.loadPrevious()" type="button" class="btn btn-primary">Previous</button>
+							<button ng-if="vm.showNextButton" ng-click="vm.loadNext()" type="button" class="btn btn-primary">Next</button>
+
+						</div>
+						<div class="panel-body" id="videoPlayer">
+							<div id="removablePlayer">
+							  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+							   data-setup="{}">
+							    <source src="{{vm.NOW_PLAYING}}" type='video/mp4'>
+							    <p class="vjs-no-js">
+							      To view this video please enable JavaScript, and consider upgrading to a web browser that
+							      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+							    </p>
+							  </video>
+						  </div>
+						</div>	
+					</div>
+				</div>	
+			</div>
+
+			<!-- Seasons and Episodes --> 
+			<div ng-if="vm.showTVShowLinks" class="row">
+				<div class="col-xs-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Seasons</div>
+						<div class="panel-body">
+							<div class="btn-group" ng-repeat="season in vm.CURRENT_SHOW.seasons track by $index">
+									<button type="button" class="btn btn-warning">{{vm.CURRENT_SHOW.totalSeasons - $index}}</button>
+									<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+
+									<ul class="dropdown-menu">
+										<li ng-repeat="episode in season track by $index">
+											<a ng-click="vm.clickOnTVLink()">{{episode.number}}.) {{episode.name}}</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</div>
+
+			

@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
+app.use( favicon( __dirname + '/client/img/favicon.ico' ) );
 
 app.all('/' , function(req , res , next){
     res.sendFile('index.html' , { root: __dirname });

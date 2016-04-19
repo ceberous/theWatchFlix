@@ -41,15 +41,91 @@
 		vm.tvURL = "south_park";
 
 		// Full Sweep Stuff
-		vm.CURRENT_SHOW.currentSeasonNumber;
 		vm.CURRENT_SHOW.currentEpisodeName;
 		vm.CURRENT_SHOW.currentEpisodeNumber;
-		vm.CURRENT_SHOW.futureSeasonNumber;
+		vm.CURRENT_SHOW.currentSeasonNumber;
 		vm.CURRENT_SHOW.futureEpisodeName;
 		vm.CURRENT_SHOW.futureEpisodeNumber;
-		vm.CURRENT_SHOW.previousSeasonNumber;
+		vm.CURRENT_SHOW.futureSeasonNumber;
 		vm.CURRENT_SHOW.previousEpisodeName;
 		vm.CURRENT_SHOW.previousEpisodeNumber;
+		vm.CURRENT_SHOW.previousSeasonNumber;
+
+		// Random Name Stuff
+		vm.CURRENT_SHOW.randomEpisodeName;
+		vm.CURRENT_SHOW.randomEpisodeNumber;
+		vm.CURRENT_SHOW.randomSeasonNumber;
+		vm.CURRENT_SHOW.randomFutureEpisodeName;
+		vm.CURRENT_SHOW.randomFutureEpisodeNumber;
+		vm.CURRENT_SHOW.randomFutureSeasonNumber;
+
+		// Video Player Config
+		vm.nowPlayingEpisodeName;
+		vm.nowPlayingEpisodeNumber;
+		vm.nowPlayingSeasonNumber;
+
+		vm.showRetryProviderButton = false;
+		vm.showNextButton = false;
+		vm.showPreviousButton = false;
+
+		vm.toggleShuffle = function() {
+
+			vm.IS_SHUFFLE = !vm.IS_SHUFFLE;
+
+			// IF Button-Click Turned shuffle ON  
+			if ( vm.IS_SHUFFLE ) {
+
+				var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.randomlyGrabbedLinks[0] );
+
+				vm.nowPlayingEpisodeName 	= vm.CURRENT_SHOW.randomEpisodeName;
+				vm.nowPlayingEpisodeNumber  = vm.CURRENT_SHOW.randomEpisodeNumber;
+				vm.nowPlayingSeasonNumber 	= vm.CURRENT_SHOW.randomSeasonNumber;
+
+				vm.displayVideo = true;
+				swapVideoSource( newURL );
+
+
+				// GENERATE *NEXT* RANDOM episode and FETCH 
+				var ranS , ranE;
+				ranS = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons.length ) ) + 1;
+				ranE = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length ) ) + 1;
+
+				vm.CURRENT_SHOW.randomFutureEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length - ranE ].name;;
+				vm.CURRENT_SHOW.randomFutureEpisodeNumber = ranE;
+				vm.CURRENT_SHOW.randomFutureSeasonNumber = ranS;
+
+				storeRandomFuture = true;
+				recievedMP4URLS = [];
+				searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , ranS , ranE );
+
+
+			}
+			else { // Button-Click Turned shuffle OFF
+
+				// may need to perform some clean up,
+				// not cleaning up for now on porpuse .
+
+			}
+
+		};
+
+		var swapVideoSource = function( url ) {
+
+			console.log("swapping source TO --> " + url );
+			$('#removablePlayer').remove();
+			setTimeout(function(){
+				
+				$("#videoPlayer").append("<div id=\"removablePlayer\"><video id=\"my-video2\" class=\"video-js\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{}\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video></div>");
+				
+				// ADD 
+				// show retry provider button 
+				// show NEXT Button if RANDOm
+				// show NEXT and PREVIOUS button if FullSweep
+
+			} , 2000 );
+
+		};
+
 
 		vm.clickOnTVLink = function(link) {
 
@@ -207,9 +283,28 @@
 
 			}
 			else if ( storeRandom ) {
+				storeRandom = false;
 
+				if ( !vm.showShuffleButton ) { vm.showShuffleButton = true; }
+
+				vm.CURRENT_SHOW.randomEpisodeName = ( vm.CURRENT_SHOW.randomEpisodeName === "unknown" ) ? grabbedEpisodeName : vm.CURRENT_SHOW.randomEpisodeName;
+
+				vm.CURRENT_SHOW.randomlyGrabbedLinks = recievedMP4URLS;
+				console.log("Recieved Random Episode: " + vm.CURRENT_SHOW.randomEpisodeName + " S: " + vm.CURRENT_SHOW.randomSeasonNumber + " E: " + vm.CURRENT_SHOW.randomEpisodeNumber );
+				console.log(vm.CURRENT_SHOW.randomlyGrabbedLinks[0]);
+				console.log(vm.CURRENT_SHOW.randomlyGrabbedLinks[1]);
 			}
 			else if ( storeRandomFuture ) {
+
+				storeRandomFuture = false;
+				vm.CURRENT_SHOW.randomFutureEpisodeName = ( vm.CURRENT_SHOW.randomFutureEpisodeName === "unknown" ) ? grabbedEpisodeName : vm.CURRENT_SHOW.randomFutureEpisodeName;
+
+				vm.CURRENT_SHOW.randomlyGrabbedFutureLinks = recievedMP4URLS;
+				console.log("Recieved *NEW* Random Episode: " + vm.CURRENT_SHOW.randomFutureEpisodeName + " S: " + vm.CURRENT_SHOW.randomFutureSeasonNumber + " E: " + vm.CURRENT_SHOW.randomFutureEpisodeNumber );
+				console.log(vm.CURRENT_SHOW.randomlyGrabbedFutureLinks[0]);
+				console.log(vm.CURRENT_SHOW.randomlyGrabbedFutureLinks[1]);
+
+				vm.showNextButton = true;
 
 			}
 
@@ -375,6 +470,19 @@
 			vm.CURRENT_SHOW.seasons = results;
 			vm.CURRENT_SHOW.totalSeasons = results.length;
 			vm.showTVShowLinks = true;
+
+			// GENERATE RANDOM episode and FETCH 
+			var ranS , ranE;
+			ranS = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons.length ) ) + 1;
+			ranE = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length ) ) + 1;
+
+			vm.CURRENT_SHOW.randomEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length - ranE ].name;;
+			vm.CURRENT_SHOW.randomEpisodeNumber = ranE;
+			vm.CURRENT_SHOW.randomSeasonNumber = ranS;
+
+			storeRandom = true;
+			recievedMP4URLS = [];
+			searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , ranS , ranE );
 
 		};
 

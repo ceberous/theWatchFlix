@@ -10,11 +10,13 @@
 		var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
 		// Temporaries
+		vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
 		var episode , season;
 		var recievedMP4URLS = [];
 		var grabbedEpisodeName;
 
 		// Store Destination Flags
+		var catchNullReturn = false;
 		var storeFullSweep = false;
 		var storeCurrent = false;
 		var storeFuture = false;
@@ -50,6 +52,11 @@
 		vm.CURRENT_SHOW.previousEpisodeNumber;
 
 		vm.clickOnTVLink = function(link) {
+
+			vm.CURRENT_SHOW.currentLinks = [];
+			vm.CURRENT_SHOW.futureLinks = [];
+			vm.CURRENT_SHOW.previousLinks = [];
+
 			console.log( "				Starting FullSweep" );
 			storeFullSweep = true;
 			storeCurrent = true;
@@ -62,15 +69,21 @@
 
 		var storeLinks = function() {
 
+
+
 			if ( storeFullSweep ) {
 
-				
-
 				if ( storeCurrent ) {
+
 					storeCurrent = false;
 					//console.log("storing into vm.CURRENT_SHOW.currentlinks[]");
 					vm.CURRENT_SHOW.currentLinks = recievedMP4URLS;
 					storeFuture = true;
+
+					// if episode name was previously unkown
+					if ( vm.CURRENT_SHOW.currentEpisodeName === "unknown"  ) {
+						vm.CURRENT_SHOW.currentEpisodeName = grabbedEpisodeName;
+					} 
 
 					
 					// boundry checks for future / next episode
@@ -89,8 +102,12 @@
 						}
 					// ===================================================================
 					
-
-					vm.CURRENT_SHOW.futureEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name;
+					if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ] != undefined ) {
+						vm.CURRENT_SHOW.futureEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name;
+					}
+					else {
+						vm.CURRENT_SHOW.futureEpisodeName = "unknown";
+					}
 					vm.CURRENT_SHOW.futureSeasonNumber = season;
 					vm.CURRENT_SHOW.futureEpisodeNumber = episode;					
 
@@ -99,11 +116,19 @@
 				}
 				else if ( storeFuture ) {
 
+					if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ] != undefined ) {
 
-					// if episode name was previously unkown
-					if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name === "unknown"  ) {
+											// if episode name was previously unkown
+						if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name === "unknown"  ) {
+							vm.CURRENT_SHOW.futureEpisodeName = grabbedEpisodeName;
+						} 
+
+					}
+					else {
 						vm.CURRENT_SHOW.futureEpisodeName = grabbedEpisodeName;
-					} 
+					}
+
+
 
 					storeFuture = false
 					//console.log("storing into vm.CURRENT_SHOW.futureLinks[]");
@@ -127,7 +152,13 @@
 					// ===================================================================
 
 
-					vm.CURRENT_SHOW.previousEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name;
+					if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ] != undefined ) {
+						vm.CURRENT_SHOW.previousEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name;
+					}
+					else {
+						vm.CURRENT_SHOW.previousEpisodeName = "unknown";
+					}
+
 					vm.CURRENT_SHOW.previousSeasonNumber = season;
 					vm.CURRENT_SHOW.previousEpisodeNumber = episode;	
 
@@ -138,10 +169,17 @@
 				}
 				else if ( storePrevious ) {
 
-					// if episode name was previously unkown
-					if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name === "unknown"  ) {
+					if  ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ] != undefined ) {
+
+						// if episode name was previously unkown
+						if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name === "unknown"  ) {
+							vm.CURRENT_SHOW.previousEpisodeName = grabbedEpisodeName;
+						} 						
+
+					}
+					else {
 						vm.CURRENT_SHOW.previousEpisodeName = grabbedEpisodeName;
-					} 
+					}
 
 					storePrevious = false;
 					storeFullSweep = false;
@@ -173,7 +211,14 @@
 
 		var getMP4URLS = function( data ) {
 
-			if ( recievedMP4URLS.length < 2 ) {
+			if ( catchNullReturn ) {
+				catchNullReturn = false;
+				recievedMP4URLS = [ "null.mp4" , "null.mp4" ];
+				storeLinks();
+
+			}
+
+			else if ( recievedMP4URLS.length < 2 ) {
 
 				var x = data.pop();
 				x.provider = x.provider.split(".")[0];
@@ -212,17 +257,25 @@
 				})
 				.success(function(data){
 
-					grabbedEpisodeName = data.shift();
-					console.log("grabbedEpisodeName = " + grabbedEpisodeName);
-					console.log("data[0] = " + data[0]);
-
-					// Decode HashedURL's
-					for ( var i = 0; i < data.length; ++i ) {
-						data[i].url = Base64.decode( data[i].url.split("=")[1] );
-						//console.log(data[i].url);
+					if ( data[1] === undefined ) {
+						grabbedEpisodeName = data[0];
+						catchNullReturn = true;
+						console.log("no links found");
+						getMP4URLS( data );						
 					}
-					recievedMP4URLS = [];
-					getMP4URLS( data );
+					else {
+
+						grabbedEpisodeName = data.shift();
+
+						// Decode HashedURL's
+						for ( var i = 0; i < data.length; ++i ) {
+							data[i].url = Base64.decode( data[i].url.split("=")[1] );
+							//console.log(data[i].url);
+						}
+						recievedMP4URLS = [];
+						getMP4URLS( data );
+
+					}
 
 				})
 			;
@@ -245,6 +298,7 @@
 					console.log(e);
 				})
 				.success(function(data){
+					console.log("about to parse episodes into seasons");
 					displayTVShowSeasons(data);
 				})
 			;

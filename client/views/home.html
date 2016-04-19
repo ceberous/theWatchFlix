@@ -26,13 +26,14 @@
 					<div class="panel panel-danger">
 						<div class="panel-heading">
 
-							<h3 ng-if="vm.displayVideo" >Season-{{vm.nowPlayingSeasonNumber}} Episode-{{vm.nowPlayingEpisodeNumber}} - {{vm.nowPlayingEpisodeName}}</h3>
+							<h3 ng-if="vm.displayVideo" >Season-{{vm.nowPlayingSeasonNumber}} Episode-{{vm.nowPlayingEpisodeNumber}} = "{{vm.nowPlayingEpisodeName}}"</h3>
 
-							<button ng-if="vm.showRetryProviderButton" ng-click="vm.retryProvider() "type="button" class="btn btn-warning">Retry Provider</button>
-							<!-- <button type="button" class="btn btn-warning">Next Provider</button> -->
-								
-							<button ng-if="vm.showPreviousButton" ng-click="vm.loadPrevious()" type="button" class="btn btn-primary">Previous</button>
-							<button ng-if="vm.showNextButton" ng-click="vm.loadNext()" type="button" class="btn btn-primary">Next</button>
+							<h1 class="text-center">
+								<!-- <button type="button" class="btn btn-warning">Next Provider</button> -->
+								<button ng-if="vm.showRetryProviderButton" ng-click="vm.retryProvider() "type="button" class="btn btn-warning">Retry Provider</button>
+								<button ng-if="vm.showPreviousButton" ng-click="vm.loadPrevious()" type="button" class="btn btn-primary">Previous</button>
+								<button ng-if="vm.showNextButton" ng-click="vm.loadNext()" type="button" class="btn btn-primary">Next</button></h1>
+							</h1>
 
 						</div>
 						<div class="panel-body" id="videoPlayer">

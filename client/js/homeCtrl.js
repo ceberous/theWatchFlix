@@ -14,6 +14,7 @@
 		var episode , season;
 		var recievedMP4URLS = [];
 		var grabbedEpisodeName;
+		var parkedMP4URLS = [];
 
 		// Store Destination Flags
 		var catchNullReturn = false;
@@ -23,6 +24,8 @@
 		var storePrevious = false;
 		var storeRandom = false;
 		var storeRandomFuture = false;
+		var storeNextOnly = false;
+		var storePreviousOnly = false;
 
 		vm.displayVideo = false;
 		vm.showTVShowLinks = false;
@@ -67,6 +70,182 @@
 		vm.showRetryProviderButton = false;
 		vm.showNextButton = false;
 		vm.showPreviousButton = false;
+
+		vm.loadPrevious = function() {
+
+			vm.showNextButton = false;
+			vm.showPreviousButton = false;
+			vm.showRetryProviderButton = false
+
+			vm.CURRENT_SHOW.futureLinks = [];
+			vm.CURRENT_SHOW.futureLinks = vm.CURRENT_SHOW.currentLinks;
+			vm.CURRENT_SHOW.currentLinks = vm.CURRENT_SHOW.previousLinks;
+			vm.CURRENT_SHOW.previousLinks = [];
+
+			vm.CURRENT_SHOW.futureEpisodeName 	= vm.CURRENT_SHOW.currentEpisodeName;
+			vm.CURRENT_SHOW.futureEpisodeNumber = vm.CURRENT_SHOW.currentEpisodeNumber;
+			vm.CURRENT_SHOW.futureSeasonNumber 	= vm.CURRENT_SHOW.currentSeasonNumber;
+
+			// a bit useless , but leaving these extra assignments for now
+				vm.CURRENT_SHOW.currentEpisodeName 		= vm.CURRENT_SHOW.previousEpisodeName;
+				vm.CURRENT_SHOW.currentEpisodeNumber 	= vm.CURRENT_SHOW.previousEpisodeNumber;
+				vm.CURRENT_SHOW.currentSeasonNumber 	= vm.CURRENT_SHOW.previousSeasonNumber;
+			// a bit useless , but leaving these extra assignments for now
+
+			vm.nowPlayingEpisodeName 	= vm.CURRENT_SHOW.currentEpisodeName;
+			vm.nowPlayingEpisodeNumber 	= vm.CURRENT_SHOW.currentEpisodeNumber;
+			vm.nowPlayingSeasonNumber 	= vm.CURRENT_SHOW.currentSeasonNumber;			
+
+			var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.currentLinks[0] );
+			swapVideoSource( newURL );	
+
+			// boundry checks for previous episode
+			// ===================================================================
+				// 1st Episode in Season ? 
+				if ( vm.CURRENT_SHOW.currentEpisodeNumber === 1 ) {
+
+					// 1st Season ? , then set to last season
+					if ( vm.CURRENT_SHOW.currentSeasonNumber === 1 ) {
+						season = vm.CURRENT_SHOW.seasons.length;
+						episode = vm.CURRENT_SHOW.seasons[ 0 ][ 0 ].number; 
+					}
+					else {
+						season = vm.CURRENT_SHOW.currentSeasonNumber - 1;
+						episode = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][0].number;								
+					}
+
+				}
+				else {
+					season = vm.CURRENT_SHOW.currentSeasonNumber;
+					episode = vm.CURRENT_SHOW.currentEpisodeNumber - 1;
+				}
+			// ===================================================================
+
+
+			if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ] != undefined ) {
+				vm.CURRENT_SHOW.previousEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name;
+			}
+			else {
+				vm.CURRENT_SHOW.previousEpisodeName = "unknown";
+			}
+
+			vm.CURRENT_SHOW.previousSeasonNumber = season;
+			vm.CURRENT_SHOW.previousEpisodeNumber = episode;	
+			
+			vm.showNextButton = true;
+			vm.showRetryProviderButton = true;	
+			storePreviousOnly = true;
+			recievedMP4URLS = [];
+			searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , season , episode );
+
+
+		};
+
+		vm.loadNext = function() {
+
+			// Shuffle Mode
+			if ( vm.IS_SHUFFLE ) {
+
+				vm.showRetryProviderButton = false;
+				vm.showNextButton = false;
+
+				vm.CURRENT_SHOW.randomlyGrabbedLinks = vm.CURRENT_SHOW.randomlyGrabbedFutureLinks;
+				
+				// a bit useless , but leaving these extra assignments for now
+					vm.CURRENT_SHOW.randomEpisodeName 	= vm.CURRENT_SHOW.randomFutureEpisodeName;
+					vm.CURRENT_SHOW.randomEpisodeNumber = vm.CURRENT_SHOW.randomFutureEpisodeNumber;
+					vm.CURRENT_SHOW.randomSeasonNumber 	= vm.CURRENT_SHOW.randomFutureSeasonNumber;
+				// a bit useless , but leaving these extra assignments for now
+
+				vm.nowPlayingEpisodeName 	= vm.CURRENT_SHOW.randomEpisodeName 
+				vm.nowPlayingEpisodeNumber 	= vm.CURRENT_SHOW.randomEpisodeNumber
+				vm.nowPlayingSeasonNumber 	= vm.CURRENT_SHOW.randomSeasonNumber;
+
+				vm.CURRENT_SHOW.randomlyGrabbedFutureLinks = [];
+				var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.randomlyGrabbedLinks[0] );
+				swapVideoSource( newURL );
+
+				// GENERATE *NEXT* RANDOM episode and FETCH 
+				var ranS , ranE;
+				ranS = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons.length ) ) + 1;
+				ranE = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length ) ) + 1;
+
+				vm.CURRENT_SHOW.randomFutureEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length - ranE ].name;;
+				vm.CURRENT_SHOW.randomFutureEpisodeNumber = ranE;
+				vm.CURRENT_SHOW.randomFutureSeasonNumber = ranS;
+
+				storeRandomFuture = true;
+				recievedMP4URLS = [];
+				searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , ranS , ranE );
+
+
+			}
+			else { // Regular Mode
+
+				vm.showRetryProviderButton = false
+				vm.showNextButton = false;
+				vm.showPreviousButton = false;
+
+				// Swap Video
+				vm.CURRENT_SHOW.previousLinks = [];
+				vm.CURRENT_SHOW.previousLinks = vm.CURRENT_SHOW.currentLinks;
+				vm.CURRENT_SHOW.currentLinks = vm.CURRENT_SHOW.futureLinks;
+				vm.CURRENT_SHOW.futureLinks = [];
+
+				vm.CURRENT_SHOW.previousEpisodeName 	= vm.CURRENT_SHOW.currentEpisodeName;
+				vm.CURRENT_SHOW.previousEpisodeNumber 	= vm.CURRENT_SHOW.currentEpisodeNumber;
+				vm.CURRENT_SHOW.previousSeasonNumber 	= vm.CURRENT_SHOW.currentSeasonNumber;
+
+				// a bit useless , but leaving these extra assignments for now
+					vm.CURRENT_SHOW.currentEpisodeName 		= vm.CURRENT_SHOW.futureEpisodeName;
+					vm.CURRENT_SHOW.currentEpisodeNumber 	= vm.CURRENT_SHOW.futureEpisodeNumber;
+					vm.CURRENT_SHOW.currentSeasonNumber 	= vm.CURRENT_SHOW.futureSeasonNumber;
+				// a bit useless , but leaving these extra assignments for now
+
+				vm.nowPlayingEpisodeName 	= vm.CURRENT_SHOW.currentEpisodeName;
+				vm.nowPlayingEpisodeNumber 	= vm.CURRENT_SHOW.currentEpisodeNumber;
+				vm.nowPlayingSeasonNumber 	= vm.CURRENT_SHOW.currentSeasonNumber;
+
+				var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.currentLinks[0] );
+				swapVideoSource( newURL );				
+
+
+
+				// boundry checks for future / next episode
+				// ===================================================================
+					// if Next Episode is Outside of this Season
+					if ( ( vm.CURRENT_SHOW.currentEpisodeNumber + 1 ) > vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - vm.CURRENT_SHOW.currentSeasonNumber ][0].number ) {
+
+						// are we in the last season ?
+						season = ( parseInt(vm.CURRENT_SHOW.currentSeasonNumber) === vm.CURRENT_SHOW.seasons.length ) ? 1 : vm.CURRENT_SHOW.currentSeasonNumber + 1 ;
+						episode = 1;
+
+					}
+					else {
+						season = vm.CURRENT_SHOW.currentSeasonNumber;
+						episode = vm.CURRENT_SHOW.currentEpisodeNumber + 1;
+					}
+				// ===================================================================
+				
+				if ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ] != undefined ) {
+					vm.CURRENT_SHOW.futureEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ].length - episode ].name;
+				}
+				else {
+					vm.CURRENT_SHOW.futureEpisodeName = "unknown";
+				}
+				vm.CURRENT_SHOW.futureSeasonNumber = season;
+				vm.CURRENT_SHOW.futureEpisodeNumber = episode;	
+
+				// Load *New* Next
+				vm.showPreviousButton = true;
+				vm.showRetryProviderButton = true;
+				storeNextOnly = true;
+				recievedMP4URLS = [];
+				searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , season , episode );
+
+			}
+
+		};
 
 		vm.toggleShuffle = function() {
 
@@ -161,7 +340,14 @@
 						vm.CURRENT_SHOW.currentEpisodeName = grabbedEpisodeName;
 					} 
 
-					
+					vm.nowPlayingEpisodeName 	= vm.CURRENT_SHOW.currentEpisodeName;
+					vm.nowPlayingEpisodeNumber  = vm.CURRENT_SHOW.currentEpisodeNumber;
+					vm.nowPlayingSeasonNumber 	= vm.CURRENT_SHOW.currentSeasonNumber;
+
+					vm.displayVideo = true;
+					var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.currentLinks[0] );
+					swapVideoSource( newURL );
+
 					// boundry checks for future / next episode
 					// ===================================================================
 						// if Next Episode is Outside of this Season
@@ -204,7 +390,8 @@
 						vm.CURRENT_SHOW.futureEpisodeName = grabbedEpisodeName;
 					}
 
-
+					vm.showNextButton = true;
+					vm.showRetryProviderButton = true;
 
 					storeFuture = false
 					//console.log("storing into vm.CURRENT_SHOW.futureLinks[]");
@@ -263,6 +450,8 @@
 						vm.CURRENT_SHOW.previousEpisodeName = grabbedEpisodeName;
 					}
 
+					vm.showPreviousButton = true;
+
 					storePrevious = false;
 					storeFullSweep = false;
 					//console.log("storing into vm.CURRENT_SHOW.previousLinks[]");
@@ -304,7 +493,37 @@
 				console.log(vm.CURRENT_SHOW.randomlyGrabbedFutureLinks[0]);
 				console.log(vm.CURRENT_SHOW.randomlyGrabbedFutureLinks[1]);
 
+				vm.showRetryProviderButton = true;
 				vm.showNextButton = true;
+
+			}
+			else if ( storeNextOnly ) {
+
+				storeNextOnly = false;
+				vm.CURRENT_SHOW.futureEpisodeName = ( vm.CURRENT_SHOW.futureEpisodeName === "unknown" ) ? grabbedEpisodeName : vm.CURRENT_SHOW.futureEpisodeName;
+				vm.CURRENT_SHOW.futureLinks = recievedMP4URLS;
+
+				console.log("Recieved *NEW* Future Episode: " + vm.CURRENT_SHOW.futureEpisodeName + " S: " + vm.CURRENT_SHOW.futureSeasonNumber + " E: " + vm.CURRENT_SHOW.futureEpisodeNumber );
+				console.log(vm.CURRENT_SHOW.futureLinks[0]);
+				console.log(vm.CURRENT_SHOW.futureLinks[1]);
+
+				vm.showRetryProviderButton = true;
+				vm.showNextButton = true;
+
+			}
+			else if ( storePreviousOnly ) {
+
+				storePreviousOnly = false;
+
+				vm.CURRENT_SHOW.previousEpisodeName = ( vm.CURRENT_SHOW.previousEpisodeName === "unknown" ) ? grabbedEpisodeName : vm.CURRENT_SHOW.previousEpisodeName;
+				vm.CURRENT_SHOW.previousLinks = recievedMP4URLS;
+
+				console.log("Recieved *NEW* Previous Episode: " + vm.CURRENT_SHOW.previousEpisodeName + " S: " + vm.CURRENT_SHOW.previousSeasonNumber + " E: " + vm.CURRENT_SHOW.previousEpisodeNumber );
+				console.log(vm.CURRENT_SHOW.previousLinks[0]);
+				console.log(vm.CURRENT_SHOW.previousLinks[1]);
+
+				vm.showRetryProviderButton = true;
+				vm.showPreviousButton = true;
 
 			}
 

@@ -137,12 +137,18 @@
 
 					// boundry checks for previous episode
 					// ===================================================================
-						// if first in season , go back a season
+						// 1st Episode in Season ? 
 						if ( vm.CURRENT_SHOW.currentEpisodeNumber === 1 ) {
 
-							// are we in the first season ?
-							season = ( vm.CURRENT_SHOW.currentSeasonNumber === 1 ) ? vm.CURRENT_SHOW.seasons.length : vm.CURRENT_SHOW.currentSeasonNumber - 1;
-							episode = vm.CURRENT_SHOW.seasons[ season - 1 ][0].number;
+							// 1st Season ? , then set to last season
+							if ( vm.CURRENT_SHOW.currentSeasonNumber === 1 ) {
+								season = vm.CURRENT_SHOW.seasons.length;
+								episode = vm.CURRENT_SHOW.seasons[ 0 ][ 0 ].number; 
+							}
+							else {
+								season = vm.CURRENT_SHOW.currentSeasonNumber - 1;
+								episode = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - season ][0].number;								
+							}
 
 						}
 						else {

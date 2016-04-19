@@ -11,6 +11,7 @@
 
 		// Temporaries
 		vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
+		var retried = false;
 		var episode , season;
 		var recievedMP4URLS = [];
 		var grabbedEpisodeName;
@@ -67,9 +68,93 @@
 		vm.nowPlayingEpisodeNumber;
 		vm.nowPlayingSeasonNumber;
 
+		vm.showShuffleButton = false;
 		vm.showRetryProviderButton = false;
 		vm.showNextButton = false;
 		vm.showPreviousButton = false;
+
+		vm.reset = function() {
+
+			displayVideo = false;
+			vm.showRetryProviderButton = false;
+			vm.showNextButton = false;
+			vm.showPreviousButton = false;
+			vm.showShuffleButton = false;
+
+			vm.CURRENT_SHOW.currentEpisodeName = null;
+			vm.CURRENT_SHOW.currentEpisodeNumber = null;
+			vm.CURRENT_SHOW.currentSeasonNumber = null;
+			vm.CURRENT_SHOW.futureEpisodeName = null;
+			vm.CURRENT_SHOW.futureEpisodeNumber = null;
+			vm.CURRENT_SHOW.futureSeasonNumber = null;
+			vm.CURRENT_SHOW.previousEpisodeName = null;
+			vm.CURRENT_SHOW.previousEpisodeNumber = null;
+			vm.CURRENT_SHOW.previousSeasonNumber = null;
+
+			// Random Name Stuff
+			vm.CURRENT_SHOW.randomEpisodeName = null;
+			vm.CURRENT_SHOW.randomEpisodeNumber = null;
+			vm.CURRENT_SHOW.randomSeasonNumber = null;
+			vm.CURRENT_SHOW.randomFutureEpisodeName = null;
+			vm.CURRENT_SHOW.randomFutureEpisodeNumber = null;
+			vm.CURRENT_SHOW.randomFutureSeasonNumber = null;
+
+			// Video Player Config
+			vm.nowPlayingEpisodeName = null;
+			vm.nowPlayingEpisodeNumber = null;
+			vm.nowPlayingSeasonNumber = null;
+
+			vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
+			retried = false;
+			episode = null; 
+			season = null;
+			recievedMP4URLS = [];
+			grabbedEpisodeName;
+			parkedMP4URLS = [];
+
+			// Store Destination Flags
+			catchNullReturn = false;
+			storeFullSweep = false;
+			storeCurrent = false;
+			storeFuture = false;
+			storePrevious = false;
+			storeRandom = false;
+			storeRandomFuture = false;
+			storeNextOnly = false;
+			storePreviousOnly = false;
+
+			vm.displayVideo = false;
+			vm.showTVShowLinks = false;
+			vm.IS_SHUFFLE = false;
+
+			vm.CURRENT_SHOW = {};
+			vm.CURRENT_SHOW.seasons = [];
+
+			vm.CURRENT_SHOW.randomlyGrabbedLinks = [];
+			vm.CURRENT_SHOW.randomlyGrabbedFutureLinks = [];
+			vm.CURRENT_SHOW.currentLinks = [];
+			vm.CURRENT_SHOW.futureLinks = [];
+			vm.CURRENT_SHOW.previousLinks = [];
+
+			vm.CURRENT_SHOW.showID = null;
+			vm.tvURL = "south_park";
+
+
+		};
+
+		vm.retryProvider = function() {
+
+			var newURL , x;
+
+			x = ( retried === true ) ? 0 : 1;
+
+			newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.randomlyGrabbedLinks[x] );
+
+			retried = !retried;
+
+			swapVideoSource( newURL );
+
+		};
 
 		vm.loadPrevious = function() {
 
@@ -253,6 +338,8 @@
 
 			// IF Button-Click Turned shuffle ON  
 			if ( vm.IS_SHUFFLE ) {
+
+				vm.CURRENT_SHOW.currentLinks = vm.CURRENT_SHOW.randomlyGrabbedLinks;
 
 				var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.randomlyGrabbedLinks[0] );
 

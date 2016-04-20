@@ -674,22 +674,24 @@
 			else if ( recievedMP4URLS.length < 2 ) {
 
 				var x = data.pop();
-				x.provider = x.provider.split(".")[0];
-				x.url = x.url.split("/")[3];
-				
-				console.log( "$http.put( /api/searchProvider/:" + x.provider + "/:" + x.url + " )" );
-				$http.put( '/api/searchProvider/' + x.provider + "/" + x.url )
-					.error(function(e){
-						console.log(e);
-					})
-					.success(function(rData){
-						if ( rData != undefined && rData != " " && rData.length > 5 ) {
-							recievedMP4URLS.push( rData );
-						}
-						getMP4URLS( data );
-					})
-				;
-
+				if ( x === undefined ) { storeLinks(); } // MAY NEED TO DELETE !!!! TEMP FIX!
+				else {			
+					x.provider = x.provider.split(".")[0];
+					x.url = x.url.split("/")[3];
+					
+					console.log( "$http.put( /api/searchProvider/:" + x.provider + "/:" + x.url + " )" );
+					$http.put( '/api/searchProvider/' + x.provider + "/" + x.url )
+						.error(function(e){
+							console.log(e);
+						})
+						.success(function(rData){
+							if ( rData != undefined && rData != " " && rData.length > 5 ) {
+								recievedMP4URLS.push( rData );
+							}
+							getMP4URLS( data );
+						})
+					;
+				}
 			}
 			else { // Grab Bag is Empty , Fill Apropriatly
 

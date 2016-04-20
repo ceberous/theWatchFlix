@@ -203,3 +203,30 @@ module.exports.searchProvider = function( req , res ) {
 	
 
 };
+
+
+module.exports.search = function( req , res ) {
+
+	// req.params.searchString
+
+	// http://thewatchseries.to/show/search-shows-json
+	// POST | x-www-form-urlencoded
+	// term: req.params.searchString
+
+	var searchURL = "http://thewatchseries.to/show/search-shows-json";
+	//console.log("Searching: " + req.params.searchString);
+	request.post( { url: searchURL , form: { term: req.params.searchString } } , function( error , response , body ) {
+
+		if ( !error && response.statusCode === 200 ) {
+			if (body) {
+				sendJSONResponse( res , 200 ,  body );
+			}
+		}
+		else {
+			if ( error ) { console.log( error ); sendJSONResponse( res , 404 , null ); }
+		}		
+
+	});	
+
+
+};

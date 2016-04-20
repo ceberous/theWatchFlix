@@ -11,6 +11,8 @@
 
 		// Temporaries
 		vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
+		var alreadySearching = false;
+		var searchInput = " ";
 		var retried = false;
 		var episode , season;
 		var recievedMP4URLS = [];
@@ -31,6 +33,8 @@
 		vm.displayVideo = false;
 		vm.showTVShowLinks = false;
 		vm.IS_SHUFFLE = false;
+
+		vm.returnedSearchResults = [];
 
 		vm.CURRENT_SHOW = {};
 		vm.CURRENT_SHOW.seasons = [];
@@ -73,8 +77,47 @@
 		vm.showNextButton = false;
 		vm.showPreviousButton = false;
 
+
+		// thewatchseries.to SEARCH
+		(function(){
+
+			$("#tvURL").bind( 'input' , function() {
+
+				searchInput = $(this).val().toString();
+
+				if ( searchInput.length >= 5 ) {
+
+					if ( !alreadySearching ) {
+						alreadySearching = true;
+						console.log( "Searching: " + searchInput + " | " + searchInput.length );
+						searchInput = encodeURI(searchInput);
+						$http.put( '/api/search/' + searchInput )
+							.error(function(e){
+								vm.returnedSearchResults = [];
+								console.log(e);
+							})
+							.success(function(data){
+								alreadySearching = false;
+								vm.returnedSearchResults = $.parseJSON(data);
+								vm.returnedSearchResults.pop();
+							})
+						;
+					}
+					
+				}
+
+			});
+
+		})();
+
+
 		vm.reset = function() {
 
+			searchInput = " ";
+			vm.returnedSearchResults = [];
+			alreadySearching = false;
+
+			$('#removablePlayer').remove();
 			displayVideo = false;
 			vm.showRetryProviderButton = false;
 			vm.showNextButton = false;
@@ -137,7 +180,7 @@
 			vm.CURRENT_SHOW.previousLinks = [];
 
 			vm.CURRENT_SHOW.showID = null;
-			vm.tvURL = "south_park";
+			vm.tvURL = " ";
 
 
 		};
@@ -689,8 +732,10 @@
 
 		};
 
-		vm.searchTVShow = function() {
+		vm.searchTVShow = function(result) {
+			if ( result != undefined ) { vm.tvURL = result.seo_url; }
 			// vm.tvURL = "south_park";
+			vm.returnedSearchResults = null;
 			searchTVShowHelper( vm.tvURL );
 		};
 

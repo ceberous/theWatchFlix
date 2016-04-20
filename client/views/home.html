@@ -12,6 +12,14 @@
 				<button ng-click="vm.reset()" style="background-image: url('http://sr.photos3.fotosearch.com/bthumb/CSP/CSP362/k3623785.jpg') !important; font-weight: 900 !important;  color: red !important;" class="btn">RESET</button>
 			</h1>
 
+			<div>
+				<ul>
+					<li ng-repeat="result in vm.returnedSearchResults track by $index" >
+						<span ng-click="vm.searchTVShow(result)">{{result.value}}</span>
+					</li>
+				</ul>
+			</div>
+
 			<div ng-if="vm.showShuffleButton" >
 				<h1 ng-if="!vm.IS_SHUFFLE" class="text-center"><button ng-click="vm.toggleShuffle()" type="button" class="btn btn-danger">Shuffle</button></h1>
 				<h1 ng-if="vm.IS_SHUFFLE"  class="text-center"><button ng-click="vm.toggleShuffle()" type="button" class="btn btn-success">Shuffle</button></h1>

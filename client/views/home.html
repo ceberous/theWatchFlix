@@ -14,7 +14,7 @@
 
 			<div>
 				<ul>
-					<li ng-repeat="result in vm.returnedSearchResults track by $index" >
+					<li ng-repeat="result in vm.returnedSearchResults " >
 						<span ng-click="vm.searchTVShow(result)">{{result.value}}</span>
 					</li>
 				</ul>
@@ -61,29 +61,30 @@
 			</div>
 
 			<!-- Seasons and Episodes --> 
-			<div ng-if="vm.showTVShowLinks" class="row">
-				<div class="col-xs-12">
-					<div class="panel panel-primary">
-						<div class="panel-heading">Seasons</div>
-						<div class="panel-body">
-							<div class="btn-group" ng-repeat="season in vm.CURRENT_SHOW.seasons track by $index">
-									<button type="button" class="btn btn-warning">{{vm.CURRENT_SHOW.totalSeasons - $index}}</button>
-									<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="caret"></span>
-										<span class="sr-only">Toggle Dropdown</span>
-									</button>
+			<div ng-if="vm.backgroundLoadAvailable">
+				<div ng-if="vm.showTVShowLinks" class="row">
+					<div class="col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Seasons</div>
+							<div class="panel-body">
+								<div class="btn-group" ng-repeat="season in vm.CURRENT_SHOW.seasons track by $index">
+										<button type="button" class="btn btn-warning">{{vm.CURRENT_SHOW.totalSeasons - $index}}</button>
+										<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="caret"></span>
+											<span class="sr-only">Toggle Dropdown</span>
+										</button>
 
-									<ul class="dropdown-menu">
-										<li ng-repeat="episode in season track by $index">
-											<a ng-click="vm.clickOnTVLink(episode)">{{episode.number}}.) {{episode.name}}</a>
-										</li>
-									</ul>
+										<ul class="dropdown-menu">
+											<li ng-repeat="episode in season track by $index">
+												<a ng-click="vm.clickOnTVLink(episode)">{{episode.number}}.) {{episode.name}}</a>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 

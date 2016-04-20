@@ -11,6 +11,7 @@
 
 		// Temporaries
 		vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
+		vm.backgroundLoadAvailable = true;
 		var alreadySearching = false;
 		var searchInput = " ";
 		var retried = false;
@@ -46,7 +47,7 @@
 		vm.CURRENT_SHOW.previousLinks = [];
 
 		vm.CURRENT_SHOW.showID;
-		vm.tvURL = "south_park";
+		vm.tvURL = " ";
 
 		// Full Sweep Stuff
 		vm.CURRENT_SHOW.currentEpisodeName;
@@ -85,7 +86,7 @@
 
 				searchInput = $(this).val().toString();
 
-				if ( searchInput.length >= 5 ) {
+				if ( searchInput.length >= 3 ) {
 
 					if ( !alreadySearching ) {
 						alreadySearching = true;
@@ -113,6 +114,7 @@
 
 		vm.reset = function() {
 
+			vm.backgroundLoadAvailable = true;
 			searchInput = " ";
 			vm.returnedSearchResults = [];
 			alreadySearching = false;
@@ -191,7 +193,7 @@
 
 			x = ( retried === true ) ? 0 : 1;
 
-			newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.randomlyGrabbedLinks[x] );
+			newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.currentLinks[x] );
 
 			retried = !retried;
 
@@ -603,7 +605,8 @@
 			}
 			else if ( storeRandom ) {
 				storeRandom = false;
-
+				vm.backgroundLoadAvailable = true;
+				vm.showTVShowLinks = true;
 				if ( !vm.showShuffleButton ) { vm.showShuffleButton = true; }
 
 				vm.CURRENT_SHOW.randomEpisodeName = ( vm.CURRENT_SHOW.randomEpisodeName === "unknown" ) ? grabbedEpisodeName : vm.CURRENT_SHOW.randomEpisodeName;
@@ -820,7 +823,8 @@
 
 			vm.CURRENT_SHOW.seasons = results;
 			vm.CURRENT_SHOW.totalSeasons = results.length;
-			vm.showTVShowLinks = true;
+			backgroundLoadAvailable = false;
+			// vm.showTVShowLinks = true;
 
 			// GENERATE RANDOM episode and FETCH 
 			var ranS , ranE;
@@ -831,6 +835,7 @@
 			vm.CURRENT_SHOW.randomEpisodeNumber = ranE;
 			vm.CURRENT_SHOW.randomSeasonNumber = ranS;
 
+			
 			storeRandom = true;
 			recievedMP4URLS = [];
 			searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , ranS , ranE );

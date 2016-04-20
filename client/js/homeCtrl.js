@@ -426,6 +426,7 @@
 			$('#removablePlayer').remove();
 			setTimeout(function(){
 				
+				$('#removablePlayer').remove();
 				$("#videoPlayer").append("<div id=\"removablePlayer\"><video id=\"my-video2\" class=\"video-js\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{}\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video></div>");
 				
 				// ADD 
@@ -433,7 +434,7 @@
 				// show NEXT Button if RANDOm
 				// show NEXT and PREVIOUS button if FullSweep
 
-			} , 2000 );
+			} , 1200 );
 
 		};
 

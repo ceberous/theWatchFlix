@@ -31,7 +31,7 @@
 
 			<div  class="row" >
 				<div class="col-xs-12" >
-					<div class="panel panel-danger">
+					<div ng-if="vm.displayVideo" class="panel panel-danger">
 						<div class="panel-heading">
 
 							<h3 ng-if="vm.displayVideo" >Season-{{vm.nowPlayingSeasonNumber}} Episode-{{vm.nowPlayingEpisodeNumber}} = "{{vm.nowPlayingEpisodeName}}"</h3>
@@ -46,7 +46,7 @@
 						</div>
 						<div class="panel-body" id="videoPlayer">
 							<div id="removablePlayer">
-							  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+							  <video style="display: none !important;" id="my-video" class="video-js" controls preload="auto" width="640" height="264"
 							   data-setup="{}">
 							    <source src="{{vm.NOW_PLAYING}}" type='video/mp4'>
 							    <p class="vjs-no-js">
@@ -68,23 +68,24 @@
 							<div class="panel-heading">Seasons</div>
 							<div class="panel-body">
 								<div class="btn-group" ng-repeat="season in vm.CURRENT_SHOW.seasons track by $index">
-										<button type="button" class="btn btn-warning">{{vm.CURRENT_SHOW.totalSeasons - $index}}</button>
-										<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<span class="caret"></span>
-											<span class="sr-only">Toggle Dropdown</span>
-										</button>
+									<button type="button" class="btn btn-warning">{{vm.CURRENT_SHOW.totalSeasons - $index}}</button>
+									<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="caret"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
 
-										<ul class="dropdown-menu">
-											<li ng-repeat="episode in season track by $index">
-												<a ng-click="vm.clickOnTVLink(episode)">{{episode.number}}.) {{episode.name}}</a>
-											</li>
-										</ul>
-									</div>
+									<ul class="dropdown-menu">
+										<li ng-repeat="episode in season track by $index">
+											<a ng-click="vm.clickOnTVLink(episode)">{{episode.number}}.) {{episode.name}}</a>
+										</li>
+									</ul>
 								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 

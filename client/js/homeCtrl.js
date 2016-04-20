@@ -765,6 +765,8 @@
 
 		var displayTVShowSeasons = function( tvShowRawHTML ) {
 
+			var Re = new RegExp( "\\." , "g" );
+
 			var haystack = tvShowRawHTML.trim();
 
 			var needle = 'content="/episode/';
@@ -791,6 +793,22 @@
 				linkName = linkName.replace( /(&amp;)/g , '&' ); // replace for & 
 
 				var tmp = haystack.substring( re.lastIndex , ( re.lastIndex + vm.CURRENT_SHOW.showID.length + 9 ) );
+				
+				// friggin tosh.0 check
+				// aka generic parser to remove "dots"
+				var dotC = tmp.split("_");
+				var answer = false;
+				for ( y = 0; y < dotC[0].length; ++y ) {
+					//console.log(dotC[0][y]);
+					if ( dotC[0][y] === "." ) {
+						answer = true;
+					}
+				}
+				if ( answer ) {
+					dotC[0] = dotC[0].replace( Re , "*" );
+					tmp = dotC[0] + "_" + dotC[1] + "_" + dotC[2];
+				}
+
 				tmp = tmp.split(".")[0];
 				tmp = tmp.split("_");
 

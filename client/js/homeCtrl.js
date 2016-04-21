@@ -10,6 +10,7 @@
 		var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
 		// Temporaries
+		vm.loadingSeasons = false;
 		vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
 		vm.backgroundLoadAvailable = true;
 		var alreadySearching = false;
@@ -149,6 +150,7 @@
 			vm.nowPlayingEpisodeNumber = null;
 			vm.nowPlayingSeasonNumber = null;
 
+			vm.loadingSeasons = false;
 			vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
 			retried = false;
 			episode = null; 
@@ -427,7 +429,7 @@
 			setTimeout(function(){
 				
 				$('#removablePlayer').remove();
-				$("#videoPlayer").append("<div id=\"removablePlayer\"><video id=\"my-video2\" class=\"video-js\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{}\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video></div>");
+				$("#videoPlayer").append("<div id=\"removablePlayer\" class=\"video-js\" ><video id=\"my-video2\" class=\"vjs-tech\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{\"controls\": true, \"autoplay\": false, \"preload\": \"auto\" }\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video><button class=\"vjs-big-play-button\" tabindex=\"0\" role=\"button\" type=\"button\" aria-live=\"polite\"><span class=\"vjs-control-text\">Play Video</span></button></div>");
 				
 				// ADD 
 				// show retry provider button 
@@ -463,6 +465,7 @@
 
 				if ( storeCurrent ) {
 
+					vm.loadingSeasons = false;
 					storeCurrent = false;
 					//console.log("storing into vm.CURRENT_SHOW.currentlinks[]");
 					vm.CURRENT_SHOW.currentLinks = recievedMP4URLS;
@@ -605,6 +608,7 @@
 
 			}
 			else if ( storeRandom ) {
+				vm.loadingSeasons = false;
 				storeRandom = false;
 				vm.backgroundLoadAvailable = true;
 				vm.showTVShowLinks = true;
@@ -739,10 +743,14 @@
 		};
 
 		vm.searchTVShow = function(result) {
+			if ( vm.tvURL === " " ) { vm.tvURL = "south_park"; }
 			if ( result != undefined ) { vm.tvURL = result.seo_url; }
 			// vm.tvURL = "south_park";
 			vm.returnedSearchResults = null;
-			searchTVShowHelper( vm.tvURL );
+			var x = vm.tvURL;
+			vm.tvURL = " ";
+			vm.loadingSeasons = true;
+			searchTVShowHelper( x );
 		};
 
 
@@ -856,7 +864,6 @@
 			vm.CURRENT_SHOW.randomEpisodeNumber = ranE;
 			vm.CURRENT_SHOW.randomSeasonNumber = ranS;
 
-			
 			storeRandom = true;
 			recievedMP4URLS = [];
 			searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , ranS , ranE );

@@ -13,11 +13,15 @@
 			</h1>
 
 			<div>
-				<ul>
+				<ul> 
 					<li ng-repeat="result in vm.returnedSearchResults " >
-						<span ng-click="vm.searchTVShow(result)">{{result.value}}</span>
+						<h3><span class="glyphicon glyphicon-play-circle" ng-click="vm.searchTVShow(result)"> - {{result.value}}</span></h3>
 					</li>
 				</ul>
+			</div>
+
+			<div ng-if="vm.loadingSeasons">
+				<img class="center-block" src="http://s31.postimg.org/rbqzrag3b/477_1.gif">
 			</div>
 
 			<div ng-if="vm.showShuffleButton" >

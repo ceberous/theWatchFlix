@@ -3,6 +3,8 @@ var router = express.Router();
 
 var theWatchFlixCtrl = require( '../controllers/theWatchFlixMain' );
 
+router.put( '/loadLatestEpisodes/' , theWatchFlixCtrl.loadLatestEpisodes );
+
 router.put( '/search/:searchString' , theWatchFlixCtrl.search );
 
 router.put( '/searchTVShow/:showID' , theWatchFlixCtrl.searchTVShow );

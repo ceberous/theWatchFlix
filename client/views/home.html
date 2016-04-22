@@ -5,7 +5,38 @@
 
 
 			<h1 class="text-center"><input id="tvURL" ng-model="vm.tvURL" type="text" placeholder="show url" ></h1>
+			
+			<h1 ng-if="!vm.showLatestEpisodes" class="text-center"><button ng-click="vm.loadLatest()" type="button" class="btn btn-primary">Latest Episodes</button></h1>
 
+			<div ng-if="vm.showLatestEpisodes" >
+				
+				<div class="col-xs-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Latest</div>
+						<div class="panel-body">
+
+							<div class="btn-group">
+
+								<button type="button" class="btn btn-warning">Episodes</button>
+								<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									<span class="caret"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+
+
+								<ul class="dropdown-menu">
+									<li ng-repeat="obj in vm.latestEpisodes | orderBy:'-date'">
+										<button ng-click="vm.goToLatest(obj)" type="button" class="btn ">{{obj.date}} = {{obj.showID}} | S: {{obj.seasonNumber}} | E: {{obj.episodeNumber}}</button>
+									</li>
+								</ul>
+
+							</div>
+
+						</div>
+					</div>
+				</div>				
+
+			</div>
 
 			<h1 class="text-center">
 				<button ng-click="vm.searchTVShow()" class="btn btn-success">Search TV Show</button>
@@ -52,7 +83,7 @@
 							<div id="removablePlayer">
 							  <video style="display: none !important;" id="my-video" class="video-js" controls preload="auto" width="640" height="264"
 							   data-setup="{}">
-							    <source src="{{vm.NOW_PLAYING}}" type='video/mp4'>
+							    <source src="" type='video/mp4'>
 							    <p class="vjs-no-js">
 							      To view this video please enable JavaScript, and consider upgrading to a web browser that
 							      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>

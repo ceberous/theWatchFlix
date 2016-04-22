@@ -4,83 +4,88 @@
 
 	function homeCtrl( $http , $sce ) {
 
+													// GLOBAL VARIABLES
+		// =============================================================================================================================
+			var vm = this;
 
-		var vm = this;
+			var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
-		var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+			// Temporaries
+			vm.loadingSeasons = false;
+			vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
+			vm.backgroundLoadAvailable = true;
+			var alreadySearching = false;
+			var searchInput = " ";
+			var retried = false;
+			var episode , season;
+			var recievedMP4URLS = [];
+			var grabbedEpisodeName;
+			var parkedMP4URLS = [];
 
-		// Temporaries
-		vm.loadingSeasons = false;
-		vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
-		vm.backgroundLoadAvailable = true;
-		var alreadySearching = false;
-		var searchInput = " ";
-		var retried = false;
-		var episode , season;
-		var recievedMP4URLS = [];
-		var grabbedEpisodeName;
-		var parkedMP4URLS = [];
+			// Store Destination Flags
+			var catchNullReturn = false;
+			var storeFullSweep = false;
+			var storeCurrent = false;
+			var storeFuture = false;
+			var storePrevious = false;
+			var storeRandom = false;
+			var storeRandomFuture = false;
+			var storeNextOnly = false;
+			var storePreviousOnly = false;
+			var storeLatest = false;
 
-		// Store Destination Flags
-		var catchNullReturn = false;
-		var storeFullSweep = false;
-		var storeCurrent = false;
-		var storeFuture = false;
-		var storePrevious = false;
-		var storeRandom = false;
-		var storeRandomFuture = false;
-		var storeNextOnly = false;
-		var storePreviousOnly = false;
+			vm.latestEpisodes = [];
+			vm.showLatestEpisodes = false;
 
-		vm.displayVideo = false;
-		vm.showTVShowLinks = false;
-		vm.IS_SHUFFLE = false;
+			vm.displayVideo = false;
+			vm.showTVShowLinks = false;
+			vm.IS_SHUFFLE = false;
 
-		vm.returnedSearchResults = [];
+			vm.returnedSearchResults = [];
 
-		vm.CURRENT_SHOW = {};
-		vm.CURRENT_SHOW.seasons = [];
+			vm.CURRENT_SHOW = {};
+			vm.CURRENT_SHOW.seasons = [];
 
-		vm.CURRENT_SHOW.randomlyGrabbedLinks = [];
-		vm.CURRENT_SHOW.randomlyGrabbedFutureLinks = [];
-		vm.CURRENT_SHOW.currentLinks = [];
-		vm.CURRENT_SHOW.futureLinks = [];
-		vm.CURRENT_SHOW.previousLinks = [];
+			vm.CURRENT_SHOW.randomlyGrabbedLinks = [];
+			vm.CURRENT_SHOW.randomlyGrabbedFutureLinks = [];
+			vm.CURRENT_SHOW.currentLinks = [];
+			vm.CURRENT_SHOW.futureLinks = [];
+			vm.CURRENT_SHOW.previousLinks = [];
 
-		vm.CURRENT_SHOW.showID;
-		vm.tvURL = " ";
+			vm.CURRENT_SHOW.showID;
+			vm.tvURL = " ";
 
-		// Full Sweep Stuff
-		vm.CURRENT_SHOW.currentEpisodeName;
-		vm.CURRENT_SHOW.currentEpisodeNumber;
-		vm.CURRENT_SHOW.currentSeasonNumber;
-		vm.CURRENT_SHOW.futureEpisodeName;
-		vm.CURRENT_SHOW.futureEpisodeNumber;
-		vm.CURRENT_SHOW.futureSeasonNumber;
-		vm.CURRENT_SHOW.previousEpisodeName;
-		vm.CURRENT_SHOW.previousEpisodeNumber;
-		vm.CURRENT_SHOW.previousSeasonNumber;
+			// Full Sweep Stuff
+			vm.CURRENT_SHOW.currentEpisodeName;
+			vm.CURRENT_SHOW.currentEpisodeNumber;
+			vm.CURRENT_SHOW.currentSeasonNumber;
+			vm.CURRENT_SHOW.futureEpisodeName;
+			vm.CURRENT_SHOW.futureEpisodeNumber;
+			vm.CURRENT_SHOW.futureSeasonNumber;
+			vm.CURRENT_SHOW.previousEpisodeName;
+			vm.CURRENT_SHOW.previousEpisodeNumber;
+			vm.CURRENT_SHOW.previousSeasonNumber;
 
-		// Random Name Stuff
-		vm.CURRENT_SHOW.randomEpisodeName;
-		vm.CURRENT_SHOW.randomEpisodeNumber;
-		vm.CURRENT_SHOW.randomSeasonNumber;
-		vm.CURRENT_SHOW.randomFutureEpisodeName;
-		vm.CURRENT_SHOW.randomFutureEpisodeNumber;
-		vm.CURRENT_SHOW.randomFutureSeasonNumber;
+			// Random Name Stuff
+			vm.CURRENT_SHOW.randomEpisodeName;
+			vm.CURRENT_SHOW.randomEpisodeNumber;
+			vm.CURRENT_SHOW.randomSeasonNumber;
+			vm.CURRENT_SHOW.randomFutureEpisodeName;
+			vm.CURRENT_SHOW.randomFutureEpisodeNumber;
+			vm.CURRENT_SHOW.randomFutureSeasonNumber;
 
-		// Video Player Config
-		vm.nowPlayingEpisodeName;
-		vm.nowPlayingEpisodeNumber;
-		vm.nowPlayingSeasonNumber;
+			// Video Player Config
+			vm.nowPlayingEpisodeName;
+			vm.nowPlayingEpisodeNumber;
+			vm.nowPlayingSeasonNumber;
 
-		vm.showShuffleButton = false;
-		vm.showRetryProviderButton = false;
-		vm.showNextButton = false;
-		vm.showPreviousButton = false;
+			vm.showShuffleButton = false;
+			vm.showRetryProviderButton = false;
+			vm.showNextButton = false;
+			vm.showPreviousButton = false;
+		// ============================================GLOBAL VARIABLES=================================================================		
 
-
-		// thewatchseries.to SEARCH
+		// thewatchseries.to SEARCH UTILITY
 		(function(){
 
 			$("#tvURL").bind( 'input' , function() {
@@ -111,6 +116,35 @@
 			});
 
 		})();
+
+		vm.goToLatest = function(obj) {
+
+			storeLatest = true;
+			vm.loadingSeasons = true;
+
+			vm.nowPlayingEpisodeName 	= "unknown";
+			vm.nowPlayingEpisodeNumber  = obj.episodeNumber;
+			vm.nowPlayingSeasonNumber 	= obj.seasonNumber;
+			recievedMP4URLS = [];
+
+			searchTVShowEpisodeForProviders( obj.showID , obj.seasonNumber , obj.episodeNumber );
+
+		};
+
+		vm.loadLatest = function() {
+			vm.loadingSeasons = true;
+			$http.put( '/api/loadLatestEpisodes/'  )
+				.error(function(e){
+					console.log(e);
+				})
+				.success(function(data){
+					vm.latestEpisodes = data;
+					vm.loadingSeasons = false;
+					vm.showLatestEpisodes = true;
+				})
+			;
+
+		};
 
 
 		vm.reset = function() {
@@ -169,6 +203,7 @@
 			storeRandomFuture = false;
 			storeNextOnly = false;
 			storePreviousOnly = false;
+			storeLatest = false;
 
 			vm.displayVideo = false;
 			vm.showTVShowLinks = false;
@@ -429,7 +464,7 @@
 			setTimeout(function(){
 				
 				$('#removablePlayer').remove();
-				$("#videoPlayer").append("<div id=\"removablePlayer\" class=\"video-js\" ><video id=\"my-video2\" class=\"vjs-tech\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{\"controls\": true, \"autoplay\": false, \"preload\": \"auto\" }\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video><button class=\"vjs-big-play-button\" tabindex=\"0\" role=\"button\" type=\"button\" aria-live=\"polite\"><span class=\"vjs-control-text\">Play Video</span></button></div>");
+				$("#videoPlayer").append("<div id=\"removablePlayer\" class=\"video-js\" ><video id=\"my-video2\" class=\"vjs-tech\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{\"controls\": true, \"autoplay\": false, \"preload\": \"auto\" }\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video></div>");
 				
 				// ADD 
 				// show retry provider button 
@@ -457,9 +492,8 @@
 			searchTVShowEpisodeForProviders( vm.CURRENT_SHOW.showID , link.season , link.number );
 		};
 
+
 		var storeLinks = function() {
-
-
 
 			if ( storeFullSweep ) {
 
@@ -664,6 +698,19 @@
 				vm.showPreviousButton = true;
 
 			}
+			else if ( storeLatest ) {
+
+				storeLatest = false;
+				vm.nowPlayingEpisodeName = grabbedEpisodeName;
+				vm.CURRENT_SHOW.currentLinks = recievedMP4URLS;
+				var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.currentLinks[0] );
+
+				vm.loadingSeasons = false;
+				vm.displayVideo = true;
+				swapVideoSource( newURL );
+
+			}
+
 
 		};
 

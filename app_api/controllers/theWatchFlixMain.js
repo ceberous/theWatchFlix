@@ -230,3 +230,90 @@ module.exports.search = function( req , res ) {
 
 
 };
+
+var parseLatestResults = function( res , latestResults  ) {
+
+	var actualResults = [];
+
+	for ( var i = 0; i < latestResults.length; ++i ) {
+
+		var $ = cheerio.load(latestResults[i]);
+
+		var $linkSearch = $(".listings a").has("span");
+		$linkSearch.add($linkSearch.find('*'));
+		$linkSearch.each( function( i , e ) {
+			
+			var cache = $(e);
+			var date = cache.children()[0].children[0]["data"];
+			if ( date.length > 9 ) {
+				var link = cache.attr("href");
+				link = link.split("/episode/")[1];
+				link = link.split(".html")[0];
+				//console.log(link);
+				link = link.split("_");
+				var episode = link.pop();
+				episode = episode.substring( 1 , episode.length ); // remove "e"
+				var season = link.pop();
+				season = season.substring( 1 , season.length ); // remove "s"
+				var showID = link.join("_");
+				var obj = {
+					showID: showID,
+					seasonNumber: season,
+					episodeNumber: episode,
+					date: date
+				};	
+				//console.log( obj.showID + " | S: " + obj.seasonNumber + " | E: " + obj.episodeNumber + " | Date: " obj.date );
+				actualResults.push( obj );
+
+			}
+
+		});
+
+	}
+
+	sendJSONResponse( res , 200 , actualResults );
+
+};
+
+
+var loadLatestURL = "http://thewatchseries.to/latest/";
+var latestIndex = 1;
+var latestResults = [];
+var loadLatestHelper = function( res ) {
+
+	if ( latestIndex < 6 ) {
+		
+		var x = loadLatestURL + latestIndex;
+		console.log("Grabbing: " + x);
+		request( x , function( error , response , body ) {
+
+			if ( !error && response.statusCode === 200 ) {
+				if (body) {
+					latestIndex += 1;
+					latestResults.push(body);
+					loadLatestHelper( res );
+				}
+			}
+			else {
+				if ( error ) { console.log( error ); sendJSONResponse( res , 404 , null ); }
+			}			
+
+		});		
+		
+	}
+	else {
+
+		parseLatestResults( res , latestResults );
+
+	}
+
+
+};
+
+module.exports.loadLatestEpisodes = function( req , res ) {
+
+	latestResults = [];
+	latestIndex = 1;
+	loadLatestHelper( res );
+
+};

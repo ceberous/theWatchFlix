@@ -10,37 +10,28 @@
 
 			<div ng-if="vm.showLatestEpisodes" >
 				
-				<div class="col-xs-12">
-					<div class="panel panel-primary">
-						<div class="panel-heading">Latest</div>
-						<div class="panel-body">
+				<div class="btn-group text-center">
 
-							<div class="btn-group">
+					<button type="button" class="btn btn-warning">Latest Episodes</button>
+					<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
 
-								<button type="button" class="btn btn-warning">Episodes</button>
-								<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-									<span class="caret"></span>
-									<span class="sr-only">Toggle Dropdown</span>
-								</button>
+					<ul class="dropdown-menu text-center">
+						<li ng-repeat="obj in vm.latestEpisodes | orderBy:'-date'">
+							<button ng-click="vm.goToLatest(obj)" type="button" class="btn ">{{obj.date}} = {{obj.showID}} | S: {{obj.seasonNumber}} | E: {{obj.episodeNumber}}</button>
+						</li>
+					</ul>
 
-
-								<ul class="dropdown-menu">
-									<li ng-repeat="obj in vm.latestEpisodes | orderBy:'-date'">
-										<button ng-click="vm.goToLatest(obj)" type="button" class="btn ">{{obj.date}} = {{obj.showID}} | S: {{obj.seasonNumber}} | E: {{obj.episodeNumber}}</button>
-									</li>
-								</ul>
-
-							</div>
-
-						</div>
-					</div>
-				</div>				
+				</div>
 
 			</div>
 
 			<h1 class="text-center">
 				<button ng-click="vm.searchTVShow()" class="btn btn-success">Search TV Show</button>
-				<button ng-click="vm.reset()" style="background-image: url('http://sr.photos3.fotosearch.com/bthumb/CSP/CSP362/k3623785.jpg') !important; font-weight: 900 !important;  color: red !important;" class="btn">RESET</button>
+				<button ng-click="vm.reset()" style="background-image: url('http://sr.photos3.fotosearch.com/bthumb/CSP/CSP362/k3623785.jpg') !important; font-weight: 900 !important;  color: red !important;" class="btn">RESET
+				</button>
 			</h1>
 
 			<div>

@@ -163,7 +163,7 @@
 					seo_url: "weediquette"
 				},
 				{
-					name: "Adam_Devines House Party",
+					name: "Adam Devines House Party",
 					seo_url: "adam_devines_house_party"
 				},
 				{
@@ -182,7 +182,7 @@
 					name: "Ace of Cakes",
 					seo_url: "ace_of_cakes"
 				}
-				
+
 			];
 
 

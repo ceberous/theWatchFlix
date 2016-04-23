@@ -237,6 +237,7 @@
 		};
 
 		vm.loadLatest = function() {
+
 			vm.loadingSeasons = true;
 			$http.put( '/api/loadLatestEpisodes/'  )
 				.error(function(e){
@@ -844,7 +845,8 @@
 
 				var x = data.pop();
 				if ( x === undefined ) { storeLinks(); } // MAY NEED TO DELETE !!!! TEMP FIX!
-				else {			
+				else {	
+
 					x.provider = x.provider.split(".")[0];
 					x.url = x.url.split("/")[3];
 					
@@ -857,8 +859,10 @@
 							getMP4URLS();
 						})
 						.success(function(rData){
+
 							if ( rData != undefined && rData != " " && rData.length > 5 ) {
-								if ( rData.substring( rData.length - 4 , rData.length ) === ".mp4" ) {
+
+								if ( rData.substring( rData.length - 4 , rData.length ) === ".mp4" || rData.substring( rData.length - 4 , rData.length ) === ".flv" ) {
 									recievedMP4URLS.push( rData );
 									getMP4URLS( data );
 								}
@@ -866,11 +870,17 @@
 									console.log( rData );
 									getMP4URLS( data );
 								}
+								
 							}
-							getMP4URLS( data );
+							else {
+								getMP4URLS( data );								
+							}
+
 						})
 					;
+
 				}
+
 			}
 			else { // Grab Bag is Empty , Fill Apropriatly
 

@@ -73,25 +73,30 @@ module.exports.searchTVShow = function( req , res ) {
 
 		});
 
-		if ( gorillavid[0] === undefined ) {
+		if ( vodlocker.length > 0 && gorillavid.length > 0 ) {
+			// setup gorrilavid as second provider
+			var g = gorillavid.pop();
+			var v = vodlocker.pop();
 
-			if ( vodlocker[0] === undefined ) {
-				results.push(blankOBJ);
-			}
-			else {
-				results = vodlocker;
-			}
-
-		}
-		else if ( vodlocker[0] === undefined ) {
-
-			results.push(blankOBJ);
-
-		}
-		else {
-			console.log("	debug(found 1 of each)");
+			results = results.concat(gorillavid);
 			results = results.concat(vodlocker);
-			results.push(gorillavid[0]);
+			results.push( g );
+			results.push( v );
+
+			console.log("		Debug(found 1 of each)");
+			console.log( results[results.length - 2].url + " | " + results[results.length - 1].url );
+
+		}
+		else if ( vodlocker.length > 0 && gorillavid.length < 0 ) {
+			results = results.concat(vodlocker);
+		}
+		else if ( vodlocker.length < 0 && gorillavid.length > 0 ) {
+			results = results.concat(gorillavid);
+		}
+		else if ( vodlocker.length < 0 && gorillavid.length < 0 ) {
+			console.log("no parsable providers");
+			resutls.push(blankOBJ);
+			resutls.push(blankOBJ);
 		}
 
 		sendJSONResponse( res , 200 , results );

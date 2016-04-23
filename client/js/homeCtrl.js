@@ -840,6 +840,8 @@
 					$http.put( '/api/searchProvider/' + x.provider + "/" + x.url )
 						.error(function(e){
 							console.log(e);
+							catchNullReturn = true;
+							getMP4URLS();
 						})
 						.success(function(rData){
 							if ( rData != undefined && rData != " " && rData.length > 5 ) {
@@ -881,7 +883,9 @@
 
 						// Decode HashedURL's
 						for ( var i = 0; i < data.length; ++i ) {
-							data[i].url = Base64.decode( data[i].url.split("=")[1] );
+							if ( data[i].url != "http://null.mp4" ) {
+								data[i].url = Base64.decode( data[i].url.split("=")[1] );
+							}
 							//console.log(data[i].url);
 						}
 						recievedMP4URLS = [];
@@ -899,7 +903,9 @@
 			if ( result != undefined ) { vm.tvURL = result.seo_url; }
 			// vm.tvURL = "south_park";
 			vm.returnedSearchResults = null;
+			
 			var x = vm.tvURL;
+
 			vm.tvURL = " ";
 			vm.loadingSeasons = true;
 			searchTVShowHelper( x );

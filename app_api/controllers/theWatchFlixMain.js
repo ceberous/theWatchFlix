@@ -37,6 +37,11 @@ module.exports.searchTVShow = function( req , res ) {
 		var vodlocker = [];
 		var gorillavid = [];
 
+		var blankOBJ = {
+			provider: "null",
+			url: "http://null.mp4"
+		};
+
 		var $ = cheerio.load(body);
 
 		var episodeName = $('span.list-top').text();
@@ -70,9 +75,9 @@ module.exports.searchTVShow = function( req , res ) {
 
 		if ( gorillavid[0] === undefined ) {
 
-			results.push("blank.mp4");
+			results.push(blankOBJ);
 			if ( vodlocker[0] === undefined ) {
-				results.push("blank.mp4");
+				results.push(blankOBJ);
 			}
 			else {
 				results.push( vodlocker[0] );
@@ -82,7 +87,7 @@ module.exports.searchTVShow = function( req , res ) {
 		}
 		else if ( vodlocker[0] === undefined ) {
 
-			results.push("blank.mp4");
+			results.push(blankOBJ);
 
 		}
 		else {

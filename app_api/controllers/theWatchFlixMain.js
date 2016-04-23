@@ -75,13 +75,11 @@ module.exports.searchTVShow = function( req , res ) {
 
 		if ( gorillavid[0] === undefined ) {
 
-			results.push(blankOBJ);
 			if ( vodlocker[0] === undefined ) {
 				results.push(blankOBJ);
 			}
 			else {
-				results.push( vodlocker[0] );
-				results.push( vodlocker[1] );
+				results = vodlocker;
 			}
 
 		}
@@ -92,8 +90,8 @@ module.exports.searchTVShow = function( req , res ) {
 		}
 		else {
 			console.log("	debug(found 1 of each)");
+			results = results.concat(vodlocker);
 			results.push(gorillavid[0]);
-			results.push(vodlocker[0]);
 		}
 
 		sendJSONResponse( res , 200 , results );
@@ -226,7 +224,8 @@ module.exports.searchTVShow = function( req , res ) {
 				sendJSONResponse( res , 200 , result );
 			}
 			else{
-				sendJSONResponse( res , 200 , "parsingError.flv" );	
+				//console.log(result);
+				sendJSONResponse( res , 200 , "gorrillavid obfuscated the url" );	
 			}
 
 

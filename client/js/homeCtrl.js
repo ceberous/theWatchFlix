@@ -605,7 +605,7 @@
 
 				failProviderSearch = false;
 				console.log("Failed Provider Search .... ");
-				console.log("Probably Were Not any 'Parsable' Providers");
+				console.log("Probably Were Not any 'Pars able' Providers");
 
 				vm.loadingSeasons = false;
 
@@ -858,7 +858,14 @@
 						})
 						.success(function(rData){
 							if ( rData != undefined && rData != " " && rData.length > 5 ) {
-								recievedMP4URLS.push( rData );
+								if ( rData.substring( rData.length - 4 , rData.length ) === ".mp4" ) {
+									recievedMP4URLS.push( rData );
+									getMP4URLS( data );
+								}
+								else {
+									console.log( rData );
+									getMP4URLS( data );
+								}
 							}
 							getMP4URLS( data );
 						})

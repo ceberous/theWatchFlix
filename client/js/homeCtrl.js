@@ -83,6 +83,109 @@
 			vm.showRetryProviderButton = false;
 			vm.showNextButton = false;
 			vm.showPreviousButton = false;
+
+			vm.favoriteShows = [
+
+				{
+					name: "Family Guy",
+					seo_url: "family_guy"
+				},
+				{
+					name: "South Park",
+					seo_url: "south_park",
+				},
+				{
+					name: "American Dad",
+					seo_url: "american_dad"
+				},
+				{
+					name: "Tosh.0",
+					seo_url: "tosh.0"
+				},
+				{
+					name: "Cake Wars",
+					seo_url: "cake_wars"
+				},
+				{
+					name: "Cake Masters",
+					seo_url: "cake_masters"
+				},				
+				{
+					name: "Project Runway All Stars",
+					seo_url: "project_runway_all-stars"
+				},
+				{
+					name: "The Simpsons",
+					seo_url: "the_simpsons"
+				},
+				{
+					name: "Rick and Morty",
+					seo_url: "rick_and_morty"
+				},
+				{
+					name: "Workaholics",
+					seo_url: "workaholics"
+				},
+				{
+					name: "New Girl",
+					seo_url: "new_girl"
+				},				
+				{
+					name: "Portlandia",
+					seo_url: "portlandia"
+				},
+				{
+					name: "Broad City",
+					seo_url: "broad_city"
+				},
+				{
+					name: "Scorpion",
+					seo_url: ""
+				},
+				{
+					name: "Limitless",
+					seo_url: "limitless"
+				},
+				{
+					name: "Tiny House Nation",
+					seo_url: "tiny_house_nation"
+				},
+				{
+					name: "Bob's Burgers",
+					seo_url: "bobs_burgers"
+				},
+				{
+					name: "Silicon Valley",
+					seo_url: "silicon_valley"
+				},
+				{
+					name: "Weediquette",
+					seo_url: "weediquette"
+				},
+				{
+					name: "Adam_Devines House Party",
+					seo_url: "adam_devines_house_party"
+				},
+				{
+					name: "The Big Bang Theory",
+					seo_url: "big_bang_theory"
+				},
+				{
+					name: "2 Broke Girls",
+					seo_url: "2_broke_girls"
+				},
+				{
+					name: "Face Off",
+					seo_url: "face_off"
+				},
+				{
+					name: "Ace of Cakes",
+					seo_url: "ace_of_cakes"
+				}
+				
+			];
+
+
 		// ============================================GLOBAL VARIABLES=================================================================		
 
 		// thewatchseries.to SEARCH UTILITY
@@ -116,6 +219,7 @@
 			});
 
 		})();
+
 
 		vm.goToLatest = function(obj) {
 

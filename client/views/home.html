@@ -5,7 +5,27 @@
 
 
 			<h1 class="text-center"><input id="tvURL" ng-model="vm.tvURL" type="text" placeholder="show url" ></h1>
-			
+
+			<div >
+				
+				<div class="btn-group text-center">
+
+					<button type="button" class="btn btn-danger">Favorites</button>
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+
+					<ul class="dropdown-menu text-center">
+						<li ng-repeat="show in vm.favoriteShows | orderBy: 'name'">
+							<button ng-click="vm.searchTVShow(show)" type="button" class="btn ">{{show.name}}</button>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
 			<h1 ng-if="!vm.showLatestEpisodes" class="text-center"><button ng-click="vm.loadLatest()" type="button" class="btn btn-primary">Latest Episodes</button></h1>
 
 			<div ng-if="vm.showLatestEpisodes" >

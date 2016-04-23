@@ -706,6 +706,7 @@
 				var newURL = $sce.trustAsResourceUrl( vm.CURRENT_SHOW.currentLinks[0] );
 
 				vm.loadingSeasons = false;
+				vm.showRetryProviderButton = true;
 				vm.displayVideo = true;
 				swapVideoSource( newURL );
 

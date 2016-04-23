@@ -24,6 +24,7 @@
 
 			// Store Destination Flags
 			var catchNullReturn = false;
+			var failProviderSearch = false;
 			var storeFullSweep = false;
 			var storeCurrent = false;
 			var storeFuture = false;
@@ -300,6 +301,7 @@
 			// Store Destination Flags
 			catchNullReturn = false;
 			storeFullSweep = false;
+			failProviderSearch = false;
 			storeCurrent = false;
 			storeFuture = false;
 			storePrevious = false;
@@ -599,7 +601,17 @@
 
 		var storeLinks = function() {
 
-			if ( storeFullSweep ) {
+			if ( failProviderSearch ) {
+
+				failProviderSearch = false;
+				console.log("Failed Provider Search .... ");
+				console.log("Probably Were Not any 'Parsable' Providers");
+
+				vm.loadingSeasons = false;
+
+			}
+
+			else if ( storeFullSweep ) {
 
 				if ( storeCurrent ) {
 
@@ -841,6 +853,7 @@
 						.error(function(e){
 							console.log(e);
 							catchNullReturn = true;
+							failProviderSearch = true;
 							getMP4URLS();
 						})
 						.success(function(rData){
@@ -1011,7 +1024,7 @@
 			vm.CURRENT_SHOW.seasons = results;
 			vm.CURRENT_SHOW.totalSeasons = results.length;
 			backgroundLoadAvailable = false;
-			// vm.showTVShowLinks = true;
+			vm.showTVShowLinks = true;
 
 			// GENERATE RANDOM episode and FETCH 
 			var ranS , ranE;

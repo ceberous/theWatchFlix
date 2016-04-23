@@ -217,7 +217,13 @@ module.exports.searchTVShow = function( req , res ) {
 			end = body.indexOf( "video.flv" , start );
 			result = body.substring( start + 7 , end + 9 );
 
-			sendJSONResponse( res , 200 , result );
+			if (result.length < 100) {
+				sendJSONResponse( res , 200 , result );
+			}
+			else{
+				sendJSONResponse( res , 200 , "parsingError.flv" );	
+			}
+
 
 		};
 

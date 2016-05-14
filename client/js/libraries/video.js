@@ -5487,7 +5487,7 @@ var LoadProgressBar = (function (_Component) {
    * @method update
    */
 
-  LoadProgressBar.prototype.update = function update() {
+  LoadProgressBar.prototype.update = function update() { //LoadProgressBar.update
     var buffered = this.player_.buffered();
     var duration = this.player_.duration();
     var bufferedEnd = this.player_.bufferedEnd();
@@ -5696,7 +5696,7 @@ var PlayProgressBar = (function (_Component) {
   };
 
   PlayProgressBar.prototype.updateDataAttr = function updateDataAttr() {
-    var time = this.player_.scrubbing() ? this.player_.getCache().currentTime : this.player_.currentTime();
+    var time = this.player_.scrubbing() ? this.player_.getCache().currentTime : ( this.player_.duration() - this.player_.currentTime() ); // : ( this.player_.duration() - this.player_.currentTime() ); // : this.player_.currentTime();
     this.el_.setAttribute('data-current-time', _utilsFormatTimeJs2['default'](time, this.player_.duration()));
   };
 
@@ -7058,7 +7058,10 @@ var CurrentTimeDisplay = (function (_Component) {
     // Allows for smooth scrubbing, when player can't keep up.
     var time = this.player_.scrubbing() ? this.player_.getCache().currentTime : this.player_.currentTime();
     var localizedText = this.localize('Current Time');
-    var formattedTime = _utilsFormatTimeJs2['default'](time, this.player_.duration());
+
+    //var formattedTime = _utilsFormatTimeJs2['default'](time, this.player_.duration());
+    var formattedTime = _utilsFormatTimeJs2['default'](this.player_.remainingTime());
+
     if (formattedTime !== this.formattedTime_) {
       this.formattedTime_ = formattedTime;
       this.contentEl_.innerHTML = '<span class="vjs-control-text">' + localizedText + '</span> ' + formattedTime;

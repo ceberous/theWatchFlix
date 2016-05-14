@@ -609,6 +609,7 @@
 				console.log("Probably Were Not any 'Pars able' Providers");
 
 				vm.loadingSeasons = false;
+				vm.showTVShowLinks = true;
 
 			}
 

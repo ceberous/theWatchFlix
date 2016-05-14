@@ -229,8 +229,11 @@ module.exports.searchTVShow = function( req , res ) {
 				sendJSONResponse( res , 200 , result );
 			}
 			else{
-				//console.log(result);
-				sendJSONResponse( res , 200 , "gorrillavid obfuscated the url" );	
+
+				end = body.indexOf( "video.mp4" , start );
+				result = body.substring( start + 7 , end + 9 );
+
+				sendJSONResponse( res , 200 , result );
 			}
 
 

@@ -78,10 +78,10 @@ module.exports.searchTVShow = function( req , res ) {
 			var g = gorillavid.pop();
 			var v = vodlocker.pop();
 
-			results = results.concat(gorillavid);
 			results = results.concat(vodlocker);
-			results.push( g );
+			results = results.concat(gorillavid);
 			results.push( v );
+			results.push( g );
 
 			console.log("		Debug(found 1 of each)");
 			console.log( results[results.length - 2].url + " | " + results[results.length - 1].url );

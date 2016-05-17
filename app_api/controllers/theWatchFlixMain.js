@@ -87,13 +87,15 @@ module.exports.searchTVShow = function( req , res ) {
 			console.log( results[results.length - 2].url + " | " + results[results.length - 1].url );
 
 		}
-		else if ( vodlocker.length > 0 && gorillavid.length < 0 ) {
+		else if ( vodlocker.length > 0 && gorillavid.length <= 0 ) {
+			console.log("		Debug(only found vodlocker)")
 			results = results.concat(vodlocker);
 		}
-		else if ( vodlocker.length < 0 && gorillavid.length > 0 ) {
+		else if ( vodlocker.length <= 0 && gorillavid.length > 0 ) {
+			console.log("		Debug(only found gorillavid)");
 			results = results.concat(gorillavid);
 		}
-		else if ( vodlocker.length < 0 && gorillavid.length < 0 ) {
+		else if ( vodlocker.length <= 0 && gorillavid.length <= 0 ) {
 			console.log("no parsable providers");
 			resutls.push(blankOBJ);
 			resutls.push(blankOBJ);

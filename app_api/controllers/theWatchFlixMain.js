@@ -1,4 +1,5 @@
 var request = require('request');
+var unirest = require('unirest');
 var cheerio = require('cheerio');
 var http = require('http');
 var https = require('https');
@@ -36,6 +37,7 @@ module.exports.searchTVShow = function( req , res ) {
 
 		var vodlocker = [];
 		var gorillavid = [];
+		var videome = [];
 
 		var blankOBJ = {
 			provider: "null",
@@ -69,7 +71,15 @@ module.exports.searchTVShow = function( req , res ) {
 					url: $(e).attr("href")
 				};				
 				gorillavid.push(obj);
+			}/*
+			else if ( p == "thevideo.me" ) {
+				var obj = {
+					provider: p,
+					url: $(e).attr("href")
+				};
+				videome.push(obj);
 			}
+			*/
 
 		});
 
@@ -85,15 +95,35 @@ module.exports.searchTVShow = function( req , res ) {
 
 			console.log("		Debug(found 1 of each)");
 			console.log( results[results.length - 2].url + " | " + results[results.length - 1].url );
+			/*
+			if ( videome.length > 0 ) {
+				console.log("		Debug-TESTING( ... adding videome[0] to results[0]  ");
+				results.push(videome[0]);
+			}
+			*/
 
 		}
 		else if ( vodlocker.length > 0 && gorillavid.length <= 0 ) {
 			console.log("		Debug(only found vodlocker)")
 			results = results.concat(vodlocker);
+
+			if ( videome.length > 0 ) {
+				console.log("		Debug-TESTING( ... adding videome[0] to results[0]  ");
+				results.push(videome[0]);
+			}
+
+
 		}
 		else if ( vodlocker.length <= 0 && gorillavid.length > 0 ) {
 			console.log("		Debug(only found gorillavid)");
 			results = results.concat(gorillavid);
+
+			if ( videome.length > 0 ) {
+				console.log("		Debug-TESTING( ... adding videome[0] to results[0]  ");
+				results.push(videome[0]);
+			}
+
+
 		}
 		else if ( vodlocker.length <= 0 && gorillavid.length <= 0 ) {
 			console.log("no parsable providers");
@@ -263,6 +293,65 @@ module.exports.searchTVShow = function( req , res ) {
 
 	//==================================Gorrillavid.in====================================================
 
+	//==================================thevideo.me====================================================
+
+		var searchTheVideo = function( res , id ) {
+
+			var searchURL = "http://thevideo.me/" + "e2t4ef6tu2rr";
+			console.log("Searching: " + searchURL );
+
+			// request.cookie("cfduid=da540b3d4ec3f45243fb23355ff1c31d41457907928; lang=1; ref_url=thewatchseries.to%2Fcale.html%3Fr%3DaHR0cDovL3RoZXZpZGVvLm1lL3UwNmVjaW51NjY4Mg%3D%3D; file_id=3353736; aff=2889; __.popunderCap=4");
+
+			// request.post( { url: searchURL , form: { _vhash: "i1102394cE" , gfk: "i22abd2449" ,  op: "download1" , id: id , hash: "3353736-206-214-1463536047-9abc0a7113aae91d689c91d479de74ac" , inhu: "foff" } } , function( error , response , body ) {
+
+			var CookieJar = unirest.jar();
+			CookieJar.add( '_cfduid=da540b3d4ec3f45243fb23355ff1c31d41457907928' , 'lang=1' , 'file_id=999490' , 'aff=124' , 'ref_url=http%3A%2F%2Fthewatchseries.to%2Fcale.html%3Fr%3DaHR0cDovL3RoZXZpZGVvLm1lL2UydDRlZjZ0dTJycg%3D%3D' , '__.popunderCap=5'  );
+
+			unirest
+				.post(searchURL)
+				.jar(CookieJar)
+				.headers({
+					'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+					'Origin' : 'http://thevideo.me',
+					'X-DevTools-Emulate-Network-Conditions-Client-Id': '45BFC8EA-1E6F-43A7-8FA2-C91E8BE766CC',
+					'Upgrade-Insecure-Requests': '1',
+					'Content-Type' : 'application/x-www-form-urlencoded',
+					'Referer': 'http://thevideo.me/e2t4ef6tu2rr',
+					'Accept-Encoding': 'gzip, deflate',
+					'Accept-Language': 'en-GB,en-US;q=0.8,en;q=0.6'
+				})
+				.send({
+					"_vhash": "i1102394cE",
+					"fname": "silicon.valley.s01e07.hdtv.x264.killers.mp4",
+					"gfk": "i1102394cE",
+					"hash": "999490-206-214-1463547270-7913085cc5f7d3748e3bc7530a7c1875",
+					"id": "e2t4ef6tu2rr",
+					"imhuman": "",
+					"inhu": "foff",
+					"op": "download1",
+					"referer": "http://thewatchseries.to/cale.html?r=aHR0cDovL3RoZXZpZGVvLm1lL2UydDRlZjZ0dTJycg==",
+					"usr_login": ""
+				})
+				.end(function( xresponse ) {
+
+					console.log(xresponse);
+					console.log(xresponse[0]);
+
+					fs.writeFile( "/home/sarah/Documents/PROGRAMMING/WEBSITES/TheWatchFlix/a.txt" , xresponse , function(e) {
+						if (e) {console.log(e);}
+					});
+
+					sendJSONResponse( res , 200 , "blank" );
+
+				});
+
+
+			//sendJSONResponse( res , 200 , "blank" );
+
+		};
+
+	//==================================thevideo.me====================================================
+	
 	module.exports.searchProvider = function( req , res ) {
 
 		var provider = req.params.provider;

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch Silicon Valley S03E02 HDTV x264 FLEET mkv</title>
+<meta name="robots" content="noindex, nofollow, nosnippet, noarchive, noimageindex"/><meta name="googlebot" content="noindex, nofollow">
+ 
+<script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:{profile:false},oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"6eef48d78f7042e9e7061bd3d43c5745",petok:"1c9abecef71449ecc79aff39035f9678f205070b-1463536703-1800",zone:"thevideo.me",rocket:"0",apps:{"ga_key":{"ua":"UA-46624123-1","ga_bs":"2"}},sha2test:0}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=e982913d31/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]>
+</script>
+<link rel="apple-touch-icon" sizes="57x57" href="https://thevideo.me/images/thevideo_icon/apple-icon-57x57.png?"><link rel="apple-touch-icon" sizes="60x60" href="https://thevideo.me/images/thevideo_icon/apple-icon-60x60.png?"><link rel="apple-touch-icon" sizes="72x72" href="https://thevideo.me/images/thevideo_icon/apple-icon-72x72.png?"><link rel="apple-touch-icon" sizes="76x76" href="https://thevideo.me/images/thevideo_icon/apple-icon-76x76.png?"><link rel="apple-touch-icon" sizes="114x114" href="https://thevideo.me/images/thevideo_icon/apple-icon-114x114.png?"><link rel="apple-touch-icon" sizes="120x120" href="https://thevideo.me/images/thevideo_icon/apple-icon-120x120.png?"><link rel="apple-touch-icon" sizes="144x144" href="https://thevideo.me/images/thevideo_icon/apple-icon-144x144.png?"><link rel="apple-touch-icon" sizes="152x152" href="https://thevideo.me/images/thevideo_icon/apple-icon-152x152.png?"><link rel="apple-touch-icon" sizes="180x180" href="https://thevideo.me/images/thevideo_icon/apple-icon-180x180.png?"><link rel="icon" type="image/png" sizes="192x192" href="https://thevideo.me/images/thevideo_icon/android-icon-192x192.png?"><link rel="icon" type="image/png" sizes="32x32" href="https://thevideo.me/images/thevideo_icon/favicon-32x32.png?"><link rel="icon" type="image/png" sizes="96x96" href="https://thevideo.me/images/thevideo_icon/favicon-96x96.png?"><link rel="icon" type="image/png" sizes="16x16" href="https://thevideo.me/images/thevideo_icon/favicon-16x16.png?"><link rel="icon" type="image/x-icon" href="https://thevideo.me/images/thevideo_icon/favicon_main.ico"/><link rel="manifest" href="https://thevideo.me/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="https://thevideo.me/images/thevideo_icon/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta http-equiv=Content-Type content="text-html; charset=UTF-8"><meta name="google" value="notranslate"><meta name="viewport" content="width=device-width, initial-scale=1.0"/> <meta name="description" content="Share your videos with friends, family and the world for free."><meta name="keywords" content="video, sharing, camera phone, video phone, free, upload"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="author" content="thevideo">
+<meta property="fb:app_id" content="425957084198586"/>
+<meta property="og:url" content="http://thevideo.me/4l6kyc2w1pgs"/>
+<meta property="og:title" content="Silicon Valley S03E02 HDTV x264-FLEET"/>
+<meta property="og:type" content="video">
+<meta property="og:description" content="Watch Silicon Valley S03E02 HDTV x264-FLEET on TheVideo"/>
+<meta property="og:image" content="https://img.thevideo.me/m/aHR0cHM6Ly9kNzQ2Ny50aGV2aWRlby5tZTo4Nzc3L2kvMDEvMDA2NDgvNGw2a3ljMncxcGdzLmpwZw==/image.jpg"/>
+<meta property="og:video:width" content="640">
+<meta property="og:video:height" content="480">
+<meta property="og:site_name" content="TheVideo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="thevideome">
+<meta name="twitter:title" content="Silicon Valley S03E02 HDTV x264-FLEET">
+<meta name="twitter:image:src" content="https://img.thevideo.me/m/aHR0cHM6Ly9kNzQ2Ny50aGV2aWRlby5tZTo4Nzc3L2kvMDEvMDA2NDgvNGw2a3ljMncxcGdzLmpwZw==/image.jpg">
+<meta name="earnify-site-verification" content="1b0a38009840a62a92d5e77ab61935251aea5c1b"/>
+<script type="text/javascript">
+		//global variables
+		var adsShowPopup = false;	//adblock detecter/honeypot
+		var site_url = 'http://thevideo.me';	//site URL
+		var _purl = 'http://a2pub.com/';	//adtrace domain
+		var _abp = 'http://ac.tvas-c.pw/';	//adb domain
+		var _a_bpac = 'https://static.servingit.co/'	//adcash domain
+		var _abp_tc = 'http://tc.tvas-c.pw/';	//tc
+		var _abp_wp = 'https://wwp.tvas-c.pw/';		//wwwp
+	</script>
+<script>
+		this.top.location !== this.location && (this.top.location = this.location);
+	</script>
+<script src="https://thevideo.me/js/jspc.js?ab"></script>
+<script type="text/javascript">
+		function jsPopunder(e,t){function n(){var e=navigator.userAgent.toLowerCase(),t={iphone:/iphone/.test(e),ipad:/ipad/.test(e)};for(i in t)if(t.hasOwnProperty(i)&&t[i]===!0)return!0;return!1}function o(){try{L=Math.floor(document.cookie.split(M+"Cap=")[1].split(";")[0])}catch(e){}return L>=C||-1!==document.cookie.indexOf(M+"=")}function r(e,n,i,r,s,u){function m(){return A.chrome&&A.version&&A.version.split(".")[0]&&parseInt(A.version.split(".")[0])>=41&&!!navigator.mimeTypes["application/x-shockwave-flash"]}if(!o()){var f="toolbar=no,scrollbars=yes,location=yes,statusbar=yes,menubar=no,resizable=1,width="+i.toString()+",height="+r.toString()+",screenX="+s+",screenY="+u,h=void 0,v=function(e){void 0!==e.button&&(h=e.button)};if(m())a(f);else{var E=function(i){i=i||window.event;var r=i.button||h;if(i.which||void 0===r||(i.which=1&r?1:2&r?3:4&r?2:0),1===i.which){var a=i.target||i.srcElement;if((!a||"_blank"!=a.getAttribute("target"))&&!o()&&(!S||!g)&&(A.chrome&&"popunder"==k?w=c(n):p=l.window.open(e,n,f),p||w)){var s=new Date,u=new Date(s.setTime(s.getTime()+x));x>0&&(document.cookie=M+"=1;expires="+u.toGMTString()+";path=/");var m=new Date;m.setHours(24,0,0,0),document.cookie=M+"Cap="+(L+1)+";expires="+m.toGMTString()+";path=/",S=1,y(t),p&&d()}}},b=A.chrome||A.opera?"mouseup":"click";document.addEventListener?document.addEventListener(b,E,!1):document.attachEvent("on"+b,E),A.msie&&"click"==b&&(document.addEventListener?document.addEventListener("mousedown",v,!1):document.attachEvent("onmousedown",v))}}}function a(t){if("popunder"==k){var n=document,o=window,i=function(){function i(e,t){for(var n in t)e.setAttribute(n,t[n]);return e}var r,a;o.hrthwg345e=function(i){o.open(e,"popup",t);var c=n.getElementById("hrthwg345eEl");c.style.width=0,c.style.height=0,c.style.visibility="hidden",i=n.elementFromPoint(r,a),"input"!=i.tagName.toLowerCase()&&"textarea"!=i.tagName.toLowerCase()&&"option"!=i.tagName.toLowerCase()||i.focus(),i.click()},D=i(n.createElement("object"),{type:"application/x-shockwave-flash",id:"hrthwg345eEl",name:"hrthwg345eEl",data:T}),D.appendChild(i(document.createElement("param"),{name:"wmode",value:"transparent"})),D.appendChild(i(document.createElement("param"),{name:"menu",value:"false"})),D.appendChild(i(document.createElement("param"),{name:"allowscriptaccess",value:"always"})),D.appendChild(i(document.createElement("param"),{name:"allowfullscreen",value:"true"})),D.setAttribute("style","position:fixed;visibility:visible;left:0;top:0;width:1px;height:1px;z-index:999999;overflow:hidden;"),n.body.insertBefore(D,n.body.firstChild),D.focus(),n.addEventListener("mousemove",function(e){r=e.clientX,a=e.clientY}),n.addEventListener("mousedown",function(e){0==e.button&&(D.style.width="100%",D.style.height="100%")})};n.body?i():n.addEventListener("DOMContentLoaded",i)}else if("popup"==k){var o=function(){try{L=Math.floor(document.cookie.split(M+"Cap=")[1].split(";")[0])}catch(e){}return L>=C||-1!==document.cookie.indexOf(M+"=")},r=function(i){i=i||window.event;var r=i.button||h;if(i.which||void 0===r||(i.which=1&r?1:2&r?3:4&r?2:0),1===i.which){var a=i.target||i.srcElement;if((!a||"_blank"!=a.getAttribute("target"))&&!o()&&(!S||!g)&&(A.chrome&&"popunder"==k?w=c(n):p=l.window.open(e,n,f),p||w)){var s=new Date,u=new Date(s.setTime(s.getTime()+x));x>0&&(document.cookie=M+"=1;expires="+u.toGMTString()+";path=/");var m=new Date;m.setHours(24,0,0,0),document.cookie=M+"Cap="+(L+1)+";expires="+m.toGMTString()+";path=/",S=1,y(t),p&&d()}}},a=A.chrome||A.opera?"mouseup":"click";document.addEventListener?document.addEventListener(a,r,!1):document.attachEvent("on"+a,r),A.msie&&"click"==a&&(document.addEventListener?document.addEventListener("mousedown",v,!1):document.attachEvent("onmousedown",v))}}function c(t){try{var n=document.createElement("a");n.href=e,t&&(n.target=t);var o=document.createEvent("MouseEvents");return o.initMouseEvent("click",!0,!0,window,0,0,0,0,0,!0,!1,!1,!0,0,null),n.dispatchEvent(o),!0}catch(i){}}function d(){try{if("popunder"!=k)return;if(A.chrome){var e=document.createEvent("MouseEvents");return e.initMouseEvent("click",!0,!0,window,0,0,0,0,0,!1,!1,!0,!1,0,null),p.dispatchEvent(e),document.webkitCancelFullScreen(),void setTimeout(function(){window.getSelection().empty()},250)}p.blur(),p.opener.window.focus(),window.self.window.focus(),window.focus(),A.firefox&&s(),A.webkit&&u(),A.msie&&setTimeout(function(){p.blur(),p.opener.window.focus(),window.self.window.focus(),window.focus()},1e3)}catch(e){}}function s(){var e=window.open("about:blank");e.focus(),e.close()}function u(){var e="",t=document.createElement("a");t.href="data:text/html,<scr"+e+"ipt>window.close();</scr"+e+"ipt>",document.getElementsByTagName("body")[0].appendChild(t);var n=document.createEvent("MouseEvents");n.initMouseEvent("click",!1,!0,window,0,0,0,0,0,!0,!1,!1,!0,0,null),t.dispatchEvent(n),t.parentNode.removeChild(t)}if(!n()){var l;try{l=top!=self&&"string"==typeof top.document.location.toString()?top:self}catch(m){l=self}var p=null,w=null;t=t||{};var f=t.name||Math.floor(1e3*Math.random()+1),h=t.width||window.outerWidth||window.innerWidth,v=t.height||window.outerHeight-100||window.innerHeight,g="number"==typeof t.once?t.once:1,E="undefined"!=typeof t.left?t.left.toString():window.screenX,b="undefined"!=typeof t.top?t.top.toString():window.screenY,y="function"==typeof t.cb?t.cb:function(){},k="undefined"!=typeof t.type?t.type:"popunder",x="number"==typeof t.wait?t.wait:0;x=1e3*x;var C=t.cap||2e4,L=0,M=t.cookie||"__.popunder",T=t.swfurl||"/mpa/pfz.swf",S=0,D=null,A=function(){var e=navigator.userAgent.toLowerCase(),t={webkit:/webkit/.test(e),mozilla:/mozilla/.test(e)&&!/(compatible|webkit)/.test(e),chrome:/chrome/.test(e),chrome31:/chrome\/[34][1-9]/.test(e),msie:(/msie/.test(e)||/trident/.test(e))&&!/opera/.test(e),firefox:/firefox/.test(e),safari:/safari/.test(e)&&!/chrome/.test(e),opera:/opera/.test(e)};return t.version=t.safari?(e.match(/.+(?:ri)[\/: ]([\d.]+)/)||[])[1]:(e.match(/.+(?:ox|me|ra|ie)[\/: ]([\d.]+)/)||[])[1],t}();o()||r(e,f,h,v,E,b)}}
+	</script>
+ 
+<link href='https://fonts.googleapis.com/css?family=Lato:300,700,300italic' rel='stylesheet' type='text/css'>
+ 
+<link href="https://thevideo.me/css/thevideo/bootstrap/bootstrap.min.css?v=0.0001000" rel="stylesheet">
+<link id="plan-theme" href="https://thevideo.me/css/thevideo/bootstrap.belizehole.min.css?v=0.0602001" rel="stylesheet">
+<link rel="stylesheet" href="https://thevideo.me/js/thevideo/plugins/jquery-ui/jquery-ui-1.11.4.css">
+<link rel="stylesheet" href="https://thevideo.me/css/thevideo/flag-icon.min.css">
+<link rel="stylesheet" href="https://thevideo.me/js/thevideo/plugins/contextjs/context.bootstrap.css">
+ 
+<link id="plan-theme-extra" href="https://thevideo.me/css/thevideo/plan.belizehole.min.css?v=0.010" rel="stylesheet">
+<link href="https://thevideo.me/js/thevideo/plugins/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+<link rel="stylesheet" href="https://thevideo.me/css/thevideo/animate.css?v=0.0001">
+<link rel="stylesheet" href="https://thevideo.me/css/thevideo/hover.min.css?v=0.0001">
+<script src="https://thevideo.me/js/thevideo/plugins/jquery/jquery-2.2.3.min.js"></script>
+ 
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+<style>body{padding-top:120px;padding-bottom:0;background-image:url('https://thevideo.me/images/background_image.jpg');background-repeat:no-repeat;background-position:center 50px;min-height:100%;position:relative;background-color:#D8D8D8;}footer{background-color:white;border-top:1px solid #ddd;padding:30px;margin-top:50px;}.main-container{min-height:50vh;height:auto;position:relative;min-width:290px;}.navbar-right{padding-right:10px!important;}.main-search-container{padding-right:0px!important;}</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-46624123-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+/* ]]> */
+</script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="border-top: 2px solid #3C3C3C;padding: 0px;margin: 0; box-shadow: 0px 0px 15px 1px rgba(58, 58, 58, 0.75);">
+<div class="col-xs-12">
+ 
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+ 
+<a class="navbar-brand" href="http://thevideo.me"><img style="display:none;visibility:hidden;" data-cfsrc="https://thevideo.me/images/thevideo.me.logo.small.png?v2" data-cfstyle="height: 30px;"><noscript><img src="https://thevideo.me/images/thevideo.me.logo.small.png?v2" style="height: 30px;"></noscript></a>
+ 
+</div>
+<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 main-search-container">
+<form class="navbar-form form-search" role="search" method="GET" action="/results">
+<div class="input-group" style="width: 100%;">
+<input type="text" class="form-control" name="search_query" placeholder="Search term...">
+<div class="input-group-btn form-search ">
+<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+</div>
+</div>
+</form>
+</div>
+ 
+<div class="collapse navbar-collapse navbar-right" id="main-nav">
+<ul class="nav navbar-nav">
+ 
+<li>
+<a href="http://thevideo.me/premium">Premium</a>
+</li>
+<li>
+<a href="http://thevideo.me/make_money.html">Make Money</a>
+</li>
+<div class="btn-group navbar-group" role="group" aria-label="loginRegister" style="margin-top:13px;">
+<a class="btn btn-danger" type="button" href="http://thevideo.me/auth/signup">Sign Up</a>
+<a class="btn btn-primary" type="button" href="http://thevideo.me/auth/signin">Login</a>
+</div>
+ 
+</ul>
+</div> 
+</div>
+</nav>
+<div class="container main-container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 bottom-buffer">
+<div class="alert alert-info fade in">
+<button class="close" data-dismiss="alert"><span>×</span></button>
+<strong>Oh snap!</strong> <br/> Wrong file
+</div>
+<div id="page-title">
+<h1 class="page-header text-overflow">Watch Silicon Valley S03E02 HDTV x264-FLEET</h1>
+</div>
+<div id="page-content">
+<div class="row">
+<form id="veriform" method="POST" action=''>
+<input type="hidden" name="op" value="download1">
+<input type="hidden" name="usr_login" value="">
+<input type="hidden" name="id" value="4l6kyc2w1pgs">
+<input type="hidden" name="fname" value="Silicon.Valley.S03E02.HDTV.x264-FLEET.mkv">
+<input type="hidden" name="referer" value="">
+<input type="hidden" name="hash" value="3242109-206-214-1463536703-5948c8e1555492e419cbcc7b6614b933">
+<input type="hidden" name="inhu" value="foff">
+<div id="vpn_notice" class="alert alert-danger" style="font-size: large; position: relative; display:none;">
+<div class="" style="position: absolute;left: 0px;top: 0px;color: rgba(220, 191, 191, 0.53);font-size: 12px;">Advertisement</div>
+<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+<h3 class="text-center" style="margin-top: 10px;">Attention!</h3>
+<div class="row bottom-buffer">
+<div class="col-xs-2 text-center">
+<em class="fa fa-fw fa-5x fa-user-secret"></em>
+</div>
+<div class="col-xs-10">
+ 
+<p class="vpn_offertext"><strong>Browsing the internet is getting riskier every day with your ISP and Government Agencies possibly spying on you. Here at TheVideo, we strongly recommend that you use a VPN to protect yourself online. By using a VPN you can enjoy traffic encryption, bypassing ISP blockades, and stay anonymous.</strong></p>
+</div>
+</div>
+<div class="clear"></div>
+<center>
+<a class="btn btn-lg btn hvr-bounce-to-top" name="getVPNToday" href="https://thevideo.me/rm/aHR0cDovL3RyYWNrLmluY29nbml0b3Zwbi5jb20vNTczOWUxYzdlZDRmMC9jbGljaw==" style="background-color: #B33A3A;border-color: #28353D;color: #FFFFFF;">
+<em class="fa fa-fw fa-lock"></em> Get a VPN Today
+</a>
+</center>
+</div>
+<div class="col-sm-12 text-center bottom-buffer" id="abl_banner">
+ 
+ 
+<script type="text/javascript" src="http://www.movie4all.co/AppJS/Hon_MobDet.js"></script>
+</div>
+<div class="col-sm-12 text-center bottom-buffer ">
+<div class="adt_3123331255"></div>
+</div>
+<script type="text/javascript">
+				//eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('i 2=[];2.3(["4","h","g"]);2.3(["4","e","5://d.a.b"]);2.3(["4","c","0"]);2.3(["4","f",r]);2.3(["4","p","5://6.8.7/9/q"]);2.3(["4","o","5://6.8.7/9/j"]);2.3(["4","n","5://6.8.7/9/k"]);2.3(["l"]);2.3(["m","1"]);',28,28,'||ADNL|push|setConstant|https|dd|pw|servinator|api|cpsoft86|com|SUBID|cdn|CDN_URL|SITEID|adnl_zone|SCAN_ZONE_CLASS|var|mvv|er|scanZones|initialize|ERR_REPORT_ENDPOINT|API_MOBILE_URL|API_URL|vv|95525'.split('|'),0,{}))
+			</script>
+<div class="col-sm-12 text-center">
+</div>
+<div class="col-sm-12 text-center pad-top mar-btm">
+<a id="btn_upgrade" name="imhuman" class="btn btn-lg btn-primary" data-loading-text="Loading..." href="/premium" style="
+					background-color: #28353D;
+					border-color: #28353D;
+				">
+<em class="fa fa-fw fa-paypal"></em>
+Continue As a Premium User
+</a>
+<button type="submit" id="btn_download" name="imhuman" class="btn btn-lg btn-primary" data-loading-text="Loading..." type="button">
+Proceed to video
+</button>
+</div>
+<div class="col-sm-12 text-center top-buffer wwwp-728">
+ 
+<div id="MarketGidScriptRootC50398">
+<div id="MarketGidPreloadC50398">
+<a id="mg_add50398" href="http://mgid.com/advertisers/?utm_source=widget&utm_medium=text&utm_campaign=add" target="_blank">Place your ad here</a><br> <a href="http://mgid.com/" target="_blank">Loading...</a>
+</div>
+<script>
+								(function(){
+							var D=new Date(),d=document,b='body',ce='createElement',ac='appendChild',st='style',ds='display',n='none',gi='getElementById';
+							var i=d[ce]('iframe');i[st][ds]=n;d[gi]("MarketGidScriptRootC50398")[ac](i);try{var iw=i.contentWindow.document;iw.open();iw.writeln("<ht"+"ml><bo"+"dy></bo"+"dy></ht"+"ml>");iw.close();var c=iw[b];}
+							catch(e){var iw=d;var c=d[gi]("MarketGidScriptRootC50398");}var dv=iw[ce]('div');dv.id="MG_ID";dv[st][ds]=n;dv.innerHTML=50398;c[ac](dv);
+							var s=iw[ce]('script');s.async='async';s.defer='defer';s.charset='utf-8';s.src="//jsc.mgid.com/t/h/thevideo.me.50398.js?t="+D.getYear()+D.getMonth()+D.getDate()+D.getHours();c[ac](s);})();
+					</script>
+</div>
+ 
+<style>#MarketGidComposite50398 .mghead{font-size:27px;color:#3C4E5A!important;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;}#MarketGidComposite50398 .mgheader{height:30px;}#MarketGidComposite50398 .mctitle a:hover{color:#3C4E5A!important;}#MarketGidComposite50398 .mctitle a{font-size:20px;}#MarketGidComposite50398 .mgline .image-with-text,#MarketGidComposite50398 .mgline .mgtobottom{max-width:100%;}</style>
+</div>
+<div class="col-xs-12 text-center bottom-buffer">
+<div class="col-md-4">
+<iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="http://nativead.tech/829?d=300x250" width="300" height="250" style="border: none;" frameborder="0" scrolling="no"></iframe>
+</div>
+<div class="col-md-4">
+<iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="http://nativead.tech/829?d=300x250" width="300" height="250" style="border: none;" frameborder="0" scrolling="no"></iframe>
+</div>
+ 
+</div>
+ 
+</form>
+</div>
+</div>
+<script>
+jQuery(function() 
+{
+	
+	eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('h(g){$("f").e(\'<3 i="4" j="m" l="1-d-n 1-a 1-6 1-7" 8="b://9.c/5/k?r=\'+E.o+\'" I="D:C; F:2; H:2; G: 0;y:A%;s:q;p: 0;z-t: -u;"></3>\');x(w(){$(".4").v()},B)}',45,45,'|allow|0px|iframe|tippc|mpaabp|popups|forms|src|thevideo|scripts|https|me|same|append|body|adsShowPopup|if|class|name|pc|sandbox|pop|origin|URL|opacity|300px||height|index|10|remove|function|setTimeout|width||100|3000|absolute|position|document|bottom|border|left|style'.split('|'),0,{}))
+	
+	if (!adsShowPopup){
+		showVPNNotice();
+	}
+	
+	function showVPNNotice(){
+	
+		$("a[name=getVPNToday]").click(function(event){
+			event.preventDefault();
+			var url = $(this).attr('href');
+			url = "https://thevideo.me/rm/"+window.btoa(url);
+			var adTarget = (bowser.chrome) ? '_blank' : '_self';
+			var win = window.open(url, adTarget);
+			win.focus();
+		});
+		
+		var vpn_variations = [
+								{	adText: 'Browsing the internet is getting riskier every day with even <strong>your ISP and Government Agencies possibly spying on you</strong>. Here at TheVideo, we strongly recommend that you use a VPN to <strong>protect yourself</strong> online. By using a VPN you can enjoy <strong>traffic encryption</strong>, <strong>bypassing ISP blockades</strong>, and <strong>stay anonymous</strong>.',
+									btnText : 'Get a VPN Today',
+									adLink : 'http://track.incognitovpn.com/573b3383c417c/click'
+								}, 
+								{	adText: '<strong>Browsing the internet is getting riskier every day with your ISP and Government Agencies possibly spying on you. Here at TheVideo, we strongly recommend that you use a VPN to protect yourself online. By using a VPN you can enjoy traffic encryption, bypassing ISP blockades, and stay anonymous.</strong>',
+									btnText : 'Go Incognito',
+									adLink : 'https://track.incognitovpn.com/573b338e14782/click'
+								}
+							];
+		
+		var randAd = vpn_variations[Math.floor(Math.random() * vpn_variations.length)];
+		implementVPNNotice(randAd);
+		$('#vpn_notice').slideDown();
+	}
+	
+	function implementVPNNotice(obj) {
+		$('#vpn_notice a[name=getVPNToday]').html('<em class="fa fa-fw fa-lock"></em> '+obj.btnText).attr('href', obj.adLink);
+		$('#vpn_notice .vpn_offertext').html(obj.adText);
+	}
+	
+	
+	$('.nativea').on('DOMNodeInserted', function(e) {
+	   setNativeCallback();
+	});
+	
+	var callbackAlreadySet = false;
+	function setNativeCallback() {
+		if (callbackAlreadySet) { return true; }
+		$('.nativea a').click(function(event){
+			console.log('na a detected');
+			event.preventDefault();
+			var url = $(this).attr('href');
+			url = "https://thevideo.me/rm/"+window.btoa(url);
+			var adTarget = (bowser.chrome) ? '_blank' : '_self';
+			var win = window.open(url, adTarget);
+			win.focus();
+		});  
+		callbackAlreadySet = true;
+	}
+	
+});
+</script>
+<div class="adnl_zone id_5950"></div>
+<script type="text/javascript">
+	var ADNL = [];
+	ADNL.push(["setConstant", "SCAN_ZONE_CLASS", "adnl_zone"]);
+	ADNL.push(["setConstant", "CDN_URL", "//cdn.cpsoft86.com"]);	
+	ADNL.push(["setConstant", "SUBID", "0"]);
+	ADNL.push(["setConstant", "SITEID", 95525]);
+	ADNL.push(["setConstant", "API_URL","//d.cpsoft86.com/api/vv"]);
+ADNL.push(["setConstant", "API_MOBILE_URL","//d.cpsoft86.com/api/mvv"]);
+ADNL.push(["setConstant", "ERR_REPORT_ENDPOINT","//a.cpsoft86.com/api/er"]);
+	ADNL.push(["scanZones"]);
+	ADNL.push(["initialize", "1"]);
+
+	
+		
+	(function (d) {
+		var s = d.createElement('script');
+		s.src = "//cdn.cpsoft86.com/scripts/1/adnl.min.js";
+		s.type = "text/javascript";
+		d.getElementsByTagName('head')[0].appendChild(s);
+	})(document);
+</script>
+<script>
+jQuery(function() 
+{
+	/*var countries = ['US'];
+	if( countries.indexOf(thevideo.user.info.country) !== -1 )
+	{
+		$('.wwwp-728').html('<iframe src="https://2mdn.info/11825?d=728x90" width="728" height="90" style="border: none;" frameborder="0" scrolling="no"></iframe>');
+	}*/
+});
+</script>
+<script type='text/javascript'>
+function adcallback(data) 
+		{ 
+			if ('uri' in data) 
+			{ 
+				data.uri = data.uri.replace("http", "https");
+				jsPopunder(data.uri, { wait: 0, cap: 0, name: '4l6kyc2w1pgs_a_0' }); 
+			} 
+		}
+jQuery(function() 
+{
+	display_800_banner();
+	
+	var user_country = 'US';
+
+	if(!adsShowPopup)
+	{
+		//console.log('user country', user_country);
+		var mh_country = ['US','AU','CA','FR','UK', 'NZ'];
+		if( mh_country.indexOf(user_country) != -1 )
+		{
+			jsPopunder('https://thevideo.me/mpaabp/mh?q=Silicon Valley S03E02 HDTV x264-FLEET', {type: 'popup'});
+			
+			//$('#hrthwg345eEl').remove();
+		}else{
+			eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){d[c]=k[c]||c}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1(\'0://2.3/4/5\');',6,6,'https|jsPopunder|thevideo|me|mpaabp|ac'.split('|'),0,{}))
+		}
+		
+		
+		//$.getScript(_abp_wp+'/pop-bid/306?cb_fn=adcallback');
+		//jsPopunder("https://code.theads.me/static/wwp.php", { wait: 0, cap: 0, name: '4l6kyc2w1pgs_a_0' }); 
+		
+		//$("#abl_banner").html("<iframe id='a2b9e0bc' name='a2b9e0bc' src='https://ttw.tvas-c.pw/lol/a.php?zi=15&amp;target=_blank&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='300' height='250' allowtransparency='true'><a href='http://code.theads.me/www/delivery/ck.php?n=a3544335&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://code.theads.me/www/delivery/avw.php?zoneid=15&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a3544335' border='0' alt='' /></a></iframe>");
+		//updateadb();
+		
+		/*var adtConfig = {type: 'banner', width: 800, height: 440, container_div: 'adt_3123331255', pid: 1};
+		$.ajax({
+			cache: true,
+			dataType: "script",
+			url: "https://servinator.pw/j",
+		}).done(function() {
+			adt.manager.loadUnit(adtConfig);
+		});*/
+		
+	}
+	else
+	{
+		$.getScript(_purl + 'b?z=53b1d47c6d47cd82ae000011');
+	}
+});
+
+var overlay_closed = 0;
+var overlay_adid = 'pre_counter';
+var overlay_cid = 'closeA';
+var overlay_hid = '5970';
+function updateadb() {
+	console.log('abp_banner');
+	if ( !$( '.id_'+overlay_hid ).hasClass( "adnl_zone" ) )
+	{
+		$('.id_'+overlay_hid).addClass('adnl_zone');
+	}
+	if (!overlay_closed && ( $('.id_'+overlay_hid).length && $('.id_'+overlay_hid).css('display') != 'block') ) {
+		document.getElementsByClassName('id_'+overlay_hid)[0].style.setProperty('display', 'block', 'important');
+		//document.getElementByClassName(overlay_cid).style.setProperty('display', 'block', 'important');
+	}else{
+		window.setTimeout("updateadb()", 500);
+	}
+}
+
+
+
+$(window).bind('resize', function() { 
+	display_800_banner();
+});
+
+var mobile_800 = "<iframe id='ae34cf04' name='ae34cf04' src='http://code.theads.me/www/delivery/afr.php?zoneid=21&cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='300' height='250' allowtransparency='true'><a href='http://code.theads.me/www/delivery/ck.php?n=ade7e182&cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://code.theads.me/www/delivery/avw.php?zoneid=21&cb=INSERT_RANDOM_NUMBER_HERE&n=ade7e182' border='0' alt='' /></a></iframe>";
+var desktop_800 = "<iframe id='ab526b87' name='ab526b87' src='http://code.theads.me/www/delivery/afr.php?zoneid=18&amp;target=_blank&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='800' height='440' allowtransparency='true'><a href='http://code.theads.me/www/delivery/ck.php?n=a89a0a30&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://code.theads.me/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a89a0a30' border='0' alt='' /></a></iframe>";
+var current_800 = 0;
+
+function display_800_banner()
+{
+	return;
+	if( ($(window).width() < 800) && (current_800 != 2) )
+	{
+		$("#abl_banner").html(mobile_800);
+		current_800 = 2;
+	}
+	else if ( ($(window).width() > 800) && (current_800 != 1) )
+	{
+		$("#abl_banner").html(desktop_800);
+		current_800 = 1;
+	}
+
+}
+
+
+</script>
+<script type="text/javascript" language="JavaScript">
+
+
+$(function() {
+
+	$('<input/>').attr({ type: 'hidden', id: 'gfk', name: 'gfk', value: 'i22abd2449' }).prependTo("#veriform");
+	$('<input/>').attr({ type: 'hidden', id: '_vhash', name: '_vhash', value: 'i1102394cE' }).prependTo("#veriform");
+});
+
+</script>
+</div>
+</div>
+</div>  
+ 
+<footer class="footer-distributed">
+<div class="footer-right footer-logo">
+<img style="display:none;visibility:hidden;" data-cfsrc="https://thevideo.me/images/thevideo.me.logo.footer.small.png?v2"><noscript><img src="https://thevideo.me/images/thevideo.me.logo.footer.small.png?v2"></noscript>
+ 
+</div>
+<div class="footer-left">
+<p class="footer-links">
+<a href="http://thevideo.me">Home</a>
+·
+<a href="http://thevideo.me/faq">FAQ</a>
+·
+<a href="http://thevideo.me/tos">Terms of service</a>
+·
+<a href="http://thevideo.me/pages/privacy.html">Privacy Policy</a>
+·
+<a href="http://thevideo.me/pages/dmca.html">Copyright</a>
+·
+<a href="http://thevideo.me/?op=news">Blog</a>
+·
+<a href="http://thevideo.me/make_money.html">Make Money</a>
+·
+<a href="http://thevideo.me/contact">Contact Us</a>
+ 
+</p>
+<p>TheVideo &copy; 2016</p>
+</div>
+</footer>
+ 
+<script src="https://thevideo.me/js/thevideo/plugins/jquery-ui/jquery-ui-1.11.4.js"></script>
+<script language="JavaScript" type="text/javascript" CHARSET="UTF-8" src="https://thevideo.me/js/thevideo/plugins/jquery-cookie/jquery.cookie.js"></script>
+<script>
+	$.cookie('file_id', '3242109', { expires: 10 });
+	$.cookie('aff', '2649', { expires: 10 });
+	
+	</script>
+ 
+<script src="https://thevideo.me/js/thevideo/bootstrap/tether.min.js"></script>
+<script src="https://thevideo.me/js/thevideo/bootstrap/bootstrap.min.js"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/bootstrap-typeahead/bootstrap-typeahead.min.js?v=0.00000002"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/bootstrap-validator/validator.min.js"></script>
+ 
+<script src="https://thevideo.me/js/thevideo/plan.ui.js"></script>
+ 
+<script src="https://thevideo.me/js/thevideo/jquery.placeholder.js"></script>
+ 
+<script src="https://thevideo.me/js/thevideo/bootstrap-fileupload.min.js"></script>
+ 
+<script src="https://thevideo.me/js/thevideo/plugins/contextjs/context.bootstrap.js"></script>
+ 
+<script src="https://thevideo.me/js/thevideo/plugins/wow.js/wow.min.js"></script>
+ 
+<script src="https://thevideo.me/js/thevideo/bootstrap-select.min.js"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="https://thevideo.me/js/thevideo/application.js?v=0.0015"></script>
+<script src="https://thevideo.me/js/popup.min.js"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/clipboard.js/clipboard.min.js"></script>
+<script src="https://thevideo.me/js/thevideo/thevideo.js?v=0.0021"></script>
+<script src="https://thevideo.me/js/thevideo/main/user.js?0.00000001"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/jquery-textarea_autosize/jquery.textarea_autosize.js"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/bowser/bowser.min.js"></script>
+<script src="https://thevideo.me/js/thevideo/plugins/jquery-binarytransport/jquery.binarytransport.js"></script>
+<script>
+		//initiate user object
+		var _usrid = '';
+		thevideo.user.init({
+					user_id : parseInt(''),
+					user_created : '',
+					username : '',
+					type : 'auto',
+					premium : parseInt(''),
+					email : '',
+					country : 'US',
+					ip : '206.214.55.155'
+				});
+	</script>
+<script>
+	$(document).ready(function(e){
+	
+		
+		$('.form-search').submit(function(){
+			var kobj = $(this).find('input[name=search_query]');
+			if(kobj.val() == '') {
+				kobj.focus();
+				return false;
+			}
+			return true;
+		});
+		
+	});
+	</script>
+<script type="text/javascript">/* CloudFlare analytics upgrade */
+</script>
+ 
+<script type="text/javascript">
+		_atrk_opts = { atrk_acct:"c8C3j1a8Dy00GH", domain:"thevideo.me",dynamic: true};
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+	</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=c8C3j1a8Dy00GH" style="display:none" height="1" width="1" alt=""/></noscript>
+ 
+<script>
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  appId      : '425957084198586',
+		  xfbml      : true,
+		  version    : 'v2.3'
+		});
+	  };
+
+	  (function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "//connect.facebook.net/en_US/sdk.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+   
+	   function postToFeed(title, desc, url, image) {
+		var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
+		function callback(response) {}
+		FB.ui(obj, callback);
+	}
+
+
+	$(document).ready(function(e){
+
+		$.each( $('.fb_share'), function ( i, v ) { 
+		
+			var fbShareBtn = v;
+			if(fbShareBtn)
+			{
+				fbShareBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					var title = fbShareBtn.getAttribute('data-title'),
+						desc = fbShareBtn.getAttribute('data-desc'),
+						url = fbShareBtn.getAttribute('data-href'),
+						image = fbShareBtn.getAttribute('data-image');
+					postToFeed(title, desc, url, image);
+
+					return false;
+				});
+			}
+	
+		});
+		
+		
+		$.each( $('.twt_share'), function ( i, v ) { 
+		
+			var twtShareBtn = v;
+			if(twtShareBtn)
+			{
+				twtShareBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					var text = encodeURIComponent(twtShareBtn.getAttribute('data-title')),
+						url = encodeURIComponent(twtShareBtn.getAttribute('data-href')),
+						twturl = "https://twitter.com/intent/tweet?tw_p=tweetbutton&url="+url+"&text="+text;
+					openShare(twturl, "_blank", 690, 250);
+					return false;
+				});
+			}
+		
+		});
+		
+		
+		$.each( $('.gp_share'), function ( i, v ) { 
+			
+			var gpShareBtn = v;
+			if(gpShareBtn)
+			{
+				gpShareBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					var url = encodeURIComponent(gpShareBtn.getAttribute('data-href')),
+						gpurl = "https://plus.google.com/share?url="+url;
+					openShare(gpurl, "_blank", 490, "");
+					return false;
+				});
+			}
+	
+		
+		});
+	
+	});
+	
+	
+	function openShare(url, title, w, h) {
+		var left = (screen.width/2)-(w/2);
+		var top = (screen.height/2)-(h/2);
+		return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+	} 
+   
+	</script>
+ 
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.thevideo.me"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.thevideo.me/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://analytics.thevideo.me/piwik.php?idsite=1" style="border:0;" alt=""/></p></noscript>
+</body>
+</html>

@@ -18,7 +18,7 @@
 
 					<ul class="dropdown-menu text-center">
 						<li ng-repeat="show in vm.favoriteShows | orderBy: 'name'">
-							<button ng-click="vm.searchTVShow(show)" type="button" class="btn ">{{show.name}}</button>
+							<button ng-click="vm.searchTVShow(show)" type="button" class="btn ">{{show.name}} </button>
 						</li>
 					</ul>
 
@@ -30,17 +30,23 @@
 
 			<div ng-if="vm.showLatestEpisodes" >
 				
-				<div class="btn-group text-center">
+				<div class="btn-group text-center"  >
 
-					<button type="button" class="btn btn-warning">Latest Episodes</button>
+					<button type="button" id="latestDropdown" class="btn btn-warning">Latest Episodes</button>
 					<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 
-					<ul class="dropdown-menu text-center">
+					<!-- IMPLEMENT via 
+						http://www.bootply.com/Wa6eNctyrN
+										||
+						http://jsfiddle.net/arunpjohny/p84nw/
+					-->
+
+					<ul class="dropdown-menu text-center no-collapse" data-no-collapse="true" >
 						<li ng-repeat="obj in vm.latestEpisodes | orderBy:'-date'">
-							<button ng-click="vm.goToLatest(obj)" type="button" class="btn ">{{obj.date}} = {{obj.showID}} | S: {{obj.seasonNumber}} | E: {{obj.episodeNumber}}</button>
+							<button ng-click="vm.goToLatest(obj)" type="button" class="btn ">{{obj.date}} = {{obj.showID}} | S: {{obj.seasonNumber}} | E: {{obj.episodeNumber}}</button><input type="checkbox" class="glyphicon glyphicon-star-empty" >
 						</li>
 					</ul>
 
@@ -71,7 +77,7 @@
 				<h1 ng-if="vm.IS_SHUFFLE"  class="text-center"><button ng-click="vm.toggleShuffle()" type="button" class="btn btn-success">Shuffle</button></h1>
 			</div>			
 
-			<h1 ng-if="vm.displayVideo">
+			<h1 ng-if="vm.CURRENT_SHOW.name != ' '" class="text-center" style="text-transform:capitalize !important;">
 				{{vm.CURRENT_SHOW.name}}
 			</h1>
 

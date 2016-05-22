@@ -10,8 +10,6 @@
 
 			var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
-			var player1;
-
 			// Temporaries
 			vm.loadingSeasons = false;
 			vm.NOW_PLAYING = $sce.trustAsResourceUrl( "http://74.117.181.136:8777/w2cefo4f2k4pcnokaltsxy6n4i3bdvdma4q3pqrjiybbrlzgkyr2qpni6y/v.mp4" );
@@ -47,6 +45,7 @@
 			vm.returnedSearchResults = [];
 
 			vm.CURRENT_SHOW = {};
+			vm.CURRENT_SHOW.name = " ";
 			vm.CURRENT_SHOW.seasons = [];
 
 			vm.CURRENT_SHOW.randomlyGrabbedLinks = [];
@@ -188,6 +187,12 @@
 
 			];
 
+			// VIDEO-QUE
+			vm.USING_QUE = false;
+			vm.ACTIVE_QUE = [];
+
+
+
 
 		// ============================================GLOBAL VARIABLES=================================================================		
 
@@ -223,6 +228,19 @@
 
 		})();
 
+		$(document).ready(function(){
+
+			
+
+		});
+
+		vm.removeFromQue = function(obj) {
+
+		};	
+
+		vm.addToQue = function(obj) {
+
+		};
 
 		vm.goToLatest = function(obj) {
 
@@ -270,6 +288,8 @@
 			vm.showNextButton = false;
 			vm.showPreviousButton = false;
 			vm.showShuffleButton = false;
+
+			vm.CURRENT_SHOW.name = " ";
 
 			vm.CURRENT_SHOW.currentEpisodeName = null;
 			vm.CURRENT_SHOW.currentEpisodeNumber = null;
@@ -577,13 +597,8 @@
 				$('#removablePlayer').remove();
 				$("#videoPlayer").append("<div id=\"removablePlayer\" class=\"video-js\" ><video id=\"my-video2\" class=\"vjs-tech\" controls preload=\"auto\" width=\"640\" height=\"264\"data-setup=\"{\"controls\": true, \"autoplay\": false, \"preload\": \"auto\" }\"><source src=\"" + url + "\"type='video/mp4'><p class=\"vjs-no-js\">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href=\"http://videojs.com/html5-video-support/\" target=\"_blank\">supports HTML5 video</a></p></video></div>");
 				
-				// ADD 
-				// show retry provider button 
-				// show NEXT Button if RANDOm
-				// show NEXT and PREVIOUS button if FullSweep
+
 			} , 1200 );
-
-
 
 		};
 
@@ -948,6 +963,9 @@
 			vm.returnedSearchResults = null;
 			
 			var x = vm.tvURL;
+			var y = x;
+			y = y.replace(/_/g , ' ' );
+			vm.CURRENT_SHOW.name = y;
 
 			vm.tvURL = " ";
 			vm.loadingSeasons = true;
@@ -1061,7 +1079,7 @@
 			ranS = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons.length ) ) + 1;
 			ranE = Math.floor( Math.random() * ( vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length ) ) + 1;
 
-			vm.CURRENT_SHOW.randomEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length - ranE ].name;;
+			vm.CURRENT_SHOW.randomEpisodeName = vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ][ vm.CURRENT_SHOW.seasons[ vm.CURRENT_SHOW.seasons.length - ranS ].length - ranE ].name;
 			vm.CURRENT_SHOW.randomEpisodeNumber = ranE;
 			vm.CURRENT_SHOW.randomSeasonNumber = ranS;
 

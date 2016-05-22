@@ -252,6 +252,10 @@
 			vm.nowPlayingSeasonNumber 	= obj.seasonNumber;
 			recievedMP4URLS = [];
 
+			var y = obj.showID;
+			y = y.replace(/_/g , ' ' );
+			vm.CURRENT_SHOW.name = y;
+
 			searchTVShowEpisodeForProviders( obj.showID , obj.seasonNumber , obj.episodeNumber );
 
 		};

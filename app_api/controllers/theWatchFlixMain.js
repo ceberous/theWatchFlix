@@ -127,8 +127,8 @@ module.exports.searchTVShow = function( req , res ) {
 		}
 		else if ( vodlocker.length <= 0 && gorillavid.length <= 0 ) {
 			console.log("no parsable providers");
-			resutls.push(blankOBJ);
-			resutls.push(blankOBJ);
+			results.push(blankOBJ);
+			results.push(blankOBJ);
 		}
 
 		sendJSONResponse( res , 200 , results );
